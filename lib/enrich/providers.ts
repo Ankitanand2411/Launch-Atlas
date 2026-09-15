@@ -1,7 +1,7 @@
 /**
  * Thin clients for the two providers the enrichment step can use. Both read keys from env.
  *  - Groq: Whisper transcription (OpenAI-compatible) and Llama chat completions with JSON mode.
- *  - Anthropic: Claude messages API for tagging, with optional frame images.
+ *  - Anthropic: messages API for tagging, with optional frame images.
  * Model names are env-overridable because they change; a 404 on a model means "update the name".
  */
 import fs from "node:fs";

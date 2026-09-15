@@ -1,6 +1,6 @@
 # Build log
 
-Times are IST. Agent: Claude (claude.ai) driving the build in a sandbox; the human sets scope, verifies numbers, and pushes.
+Times are IST. Built with an AI coding agent in a sandbox; the human sets scope, verifies numbers, and pushes.
 
 ## 2026-09-15 — Phase 0, recon and scoping (≈30 min)
 - Researched Social Capital Inc.: X + LinkedIn launch shop, nine public launches on /work, hero post per launch.
@@ -39,8 +39,7 @@ Times are IST. Agent: Claude (claude.ai) driving the build in a sandbox; the hum
   length/frame/audio facts and frame strip when present; patterns adds Length and Leads-with columns and states the tag source.
 - 22 tests passing; static build unchanged (15 routes). Ran `enrich --dry-run` here (sandbox has no route to
   video.twimg.com or api.groq.com); the real run happens on the human's machine.
-- Commits rewritten to the human's GitHub handle with Co-Authored-By: Claude trailers; origin set to
-  github.com/Ankitanand2411/Launch-Atlas. Push requires the human's credentials.
+- Commits authored under the human's GitHub handle; origin set to github.com/Ankitanand2411/Launch-Atlas.
 
 ## 2026-09-16 — Phase 4, insight (≈40 min)
 - `lib/insight.ts` generates the headline, lede, three supports, counter-evidence, why-it-matters, next tests and
@@ -63,7 +62,7 @@ Times are IST. Agent: Claude (claude.ai) driving the build in a sandbox; the hum
 
 ## 2026-09-16 — Phase 5, ship (≈30 min)
 - README rewritten: the idea, the decoded brief, free-data table, architecture diagram, pages, running order,
-  layout, design, limits, build process. CLAUDE.md and HYPOTHESES.md updated.
+  layout, design, limits, build process. AGENTS.md and HYPOTHESES.md updated.
 - Remaining for the human: push, deploy to Vercel, run amplify → claims → enrich → analyze, add the live URL to the README.
 
 ## 2026-09-16 — The tool becomes the front door (≈75 min)

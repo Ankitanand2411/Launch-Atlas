@@ -26,7 +26,7 @@ Supporting patterns: 8 of 9 posts lead with a capital or traction figure (the pr
 
 | Vijay wrote | What it tests | How this project answers |
 |---|---|---|
-| vibe-coded | AI-native in practice | Agent-built end to end; `CLAUDE.md`, `BUILD_LOG.md`, one commit per phase with co-author trailers |
+| vibe-coded | AI-native in practice | Agent-built end to end; `AGENTS.md`, `BUILD_LOG.md`, one commit per phase |
 | web tool | ship something clickable | Static Next.js site, one dynamic route, deploys to Vercel with no database |
 | **all** public information | completeness on a narrow slice | Nine launches enumerated by Social Capital itself; every number links to its source |
 | **one** operational aspect | scope | Launches (hero post + video); exclusions listed below |
@@ -155,7 +155,7 @@ data/derived/        generated JSON the app reads (committed)
 data/raw/            cached fetches (gitignored)
 public/frames/       sampled video frames (committed once enrichment runs)
 tests/               Vitest
-CLAUDE.md            constraints the agent works under
+AGENTS.md            constraints the agent works under
 HYPOTHESES.md        the nine, written before code, with status
 DESIGN.md            token system and the review against generic defaults
 BUILD_LOG.md         what was done when, by whom
@@ -182,4 +182,4 @@ Modern, minimal, and built around one figure. White paper, black ink, Geist Sans
 
 ## How it was built
 
-By an agent (Claude) in phases, with a human setting scope, checking numbers and pushing. Phase 0 wrote the hypotheses before any code; Phase 1 built ingestion and the decoders; Phase 3 the site; Phase 2 enrichment; then the free network and claims layers, the analyze route and the generated insight. One commit per phase with `Co-Authored-By: Claude`, screenshots reviewed at two widths, two bugs caught from screenshots and fixed. Time per phase in `BUILD_LOG.md`.
+By an AI coding agent in phases, with a human setting scope, checking numbers and pushing. Phase 0 wrote the hypotheses before any code; Phase 1 built ingestion and the decoders; Phase 3 the site; Phase 2 enrichment; then the free network and claims layers, the analyze route and the generated insight. One commit per phase, screenshots reviewed at two widths, two bugs caught from screenshots and fixed. Time per phase in `BUILD_LOG.md`.
