@@ -5,7 +5,7 @@ const links = [
   { href: "/patterns", label: "Patterns" },
   { href: "/network", label: "Network" },
   { href: "/claims", label: "Claims" },
-  { href: "/analyze", label: "Analyze" },
+  { href: "/analyze", label: "Read a launch" },
   { href: "/insight", label: "Insight" },
 ];
 

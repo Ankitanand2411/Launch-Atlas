@@ -23,6 +23,7 @@ export function parseSyndication(json: unknown, id: string, now = new Date()): X
   const video = (t.video ?? null) as { variants?: Array<{ type?: string; src?: string }>; durationMs?: number } | null;
   const best = video?.variants?.filter((v) => (v.type ?? "").includes("mp4") && v.src).pop()?.src ?? null;
   const created = typeof t.created_at === "string" ? new Date(t.created_at) : null;
+  const quoted = (t.quoted_tweet ?? null) as { id_str?: string } | null;
   return {
     id,
     url: `https://x.com/${typeof user.screen_name === "string" ? user.screen_name : "i"}/status/${id}`,
@@ -39,6 +40,10 @@ export function parseSyndication(json: unknown, id: string, now = new Date()): X
     createdAtUtc: created && !Number.isNaN(created.getTime()) ? isoNoMs(created) : null,
     bestVideoUrl: best,
     videoDurationS: video?.durationMs ? Math.round(video.durationMs / 100) / 10 : null,
+    videoWidth: null,
+    videoHeight: null,
+    replyToId: typeof t.in_reply_to_status_id_str === "string" ? t.in_reply_to_status_id_str : null,
+    quoteOfId: quoted?.id_str ?? null,
     source: "syndication",
     fetchedAt: isoNoMs(now),
   };

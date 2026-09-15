@@ -186,6 +186,11 @@ export interface XPostMetrics {
   /** Highest-bitrate MP4 the endpoint exposes, if any. */
   bestVideoUrl: string | null;
   videoDurationS: number | null;
+  videoWidth: number | null;
+  videoHeight: number | null;
+  /** Set when the post is a reply or a quote of another post. */
+  replyToId: string | null;
+  quoteOfId: string | null;
   source: "fxtwitter" | "syndication";
   fetchedAt: string;
 }

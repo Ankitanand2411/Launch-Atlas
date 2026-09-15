@@ -65,3 +65,16 @@ Times are IST. Agent: Claude (claude.ai) driving the build in a sandbox; the hum
 - README rewritten: the idea, the decoded brief, free-data table, architecture diagram, pages, running order,
   layout, design, limits, build process. CLAUDE.md and HYPOTHESES.md updated.
 - Remaining for the human: push, deploy to Vercel, run amplify → claims → enrich → analyze, add the live URL to the README.
+
+## 2026-09-16 — The tool becomes the front door (≈75 min)
+- Human's call: the site read as a report; a tool aggregates when you point it at something. Rebuilt around "paste a launch".
+- `lib/read.ts`: from one or many X posts, pick the hero (earliest), place every other post in minutes after it, classify
+  quote / reply / standalone from the endpoint's relationship fields, build the creator roster with follower tiers,
+  totals, quote share, wave median and p90, and the hero's fingerprint. Pure and tested.
+- `/api/read` (many posts, concurrency-capped free-endpoint fetches) alongside `/api/anatomy`; shared `fetchXMetrics`.
+- `/analyze` → "Read a launch": textarea for many links, example chips, wave strip (square-root time axis, dots sized
+  by followers), roster table, hero anatomy and score; every reading gets a shareable `?ids=` URL that re-runs on load.
+- Home page opens with the paste box; the nine become "read the same way".
+- Screenshot review with an absurd input (three launches months apart) exposed colliding tick labels, raw-minute medians
+  and a false "Video: none" when the endpoint had not answered. All three fixed.
+- 34 tests; build static apart from the two read routes.

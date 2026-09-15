@@ -1,4 +1,5 @@
 import { LaunchClock } from "@/components/LaunchClock";
+import { ReadBox } from "@/components/ReadBox";
 import { Roster } from "@/components/Roster";
 import { analysis, launches, launchesChronological } from "@/lib/data";
 import { buildInsight } from "@/lib/insight";
@@ -8,10 +9,14 @@ export default function Home() {
   const ins = buildInsight(analysis, launches);
   return (
     <div className="pt-14 sm:pt-20">
-      <h1 className="display measure">Nine launches. One clock.</h1>
+      <h1 className="display measure">Read any launch.</h1>
       <p className="measure mt-5 text-[17px] leading-7 text-ink-2">
-        Every launch Social Capital Inc. lists on its work page, decoded from the public posts themselves:
-        when it fired, on which platforms, with what hook, and how the room responded.
+        Paste a founder's launch post and the tool reads it live: exact posting time, today's numbers, the hook, and how far it sits from Social Capital's playbook. Add the creators who amplified it and it reads the whole launch.
+      </p>
+      <div className="mt-6"><ReadBox /></div>
+      <h2 className="section-title mt-16">Social Capital's nine, read the same way</h2>
+      <p className="measure mt-2 text-[17px] leading-7 text-ink-2">
+        Every launch on their work page, decoded from the public posts themselves: when it fired, on which platforms, with what hook, and how the room responded.
       </p>
       <p className="measure mt-8 text-[20px] leading-8">
         <span className="marker">{ins.headline}</span>

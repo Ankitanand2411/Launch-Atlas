@@ -15,6 +15,9 @@ describe("free X endpoints", () => {
     const m = parseFxTwitter({ code: 200, tweet: { url: "https://x.com/a/status/1", text: "hi", author: { screen_name: "a", name: "A", followers: 1234 }, replies: 5, retweets: 7, likes: 90, views: 1000, created_timestamp: 1762782642, media: { videos: [{ url: "v.mp4", duration: 94, variants: [{ url: "lo.mp4", bitrate: 100, content_type: "video/mp4" }, { url: "hi.mp4", bitrate: 900, content_type: "video/mp4" }] }] } } }, "1");
     expect(m.likes).toBe(90); expect(m.reposts).toBe(7); expect(m.quotes).toBeNull(); expect(m.authorFollowers).toBe(1234);
     expect(m.bestVideoUrl).toBe("hi.mp4"); expect(m.createdAtUtc).toBe("2025-11-10T13:50:42Z"); expect(m.source).toBe("fxtwitter");
+    expect(m.replyToId).toBeNull(); expect(m.quoteOfId).toBeNull();
+    const q = parseFxTwitter({ code: 200, tweet: { text: "q", author: {}, quote: { id: "42" }, replying_to_status: "7" } }, "2");
+    expect(q.quoteOfId).toBe("42"); expect(q.replyToId).toBe("7");
     expect(() => parseFxTwitter({ code: 404, message: "NOT_FOUND" }, "1")).toThrow();
   });
   it("derives the syndication token and parses the payload", () => {

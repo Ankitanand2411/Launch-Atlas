@@ -21,6 +21,8 @@ export function parseFxTwitter(json: unknown, id: string, now = new Date()): XPo
   const video = media.videos?.[0];
   const best = video?.variants?.filter((v) => (v.content_type ?? "").includes("mp4") && v.url).sort((a, b) => (b.bitrate ?? 0) - (a.bitrate ?? 0))[0]?.url ?? video?.url ?? null;
   const ts = num(t.created_timestamp);
+  const quote = (t.quote ?? null) as { id?: string } | null;
+  const replyStatus = t.replying_to_status;
   return {
     id,
     url: typeof t.url === "string" ? t.url : `https://x.com/i/status/${id}`,
@@ -37,6 +39,10 @@ export function parseFxTwitter(json: unknown, id: string, now = new Date()): XPo
     createdAtUtc: ts ? isoNoMs(new Date(ts * 1000)) : null,
     bestVideoUrl: best,
     videoDurationS: num(video?.duration),
+    videoWidth: num((video as { width?: number } | undefined)?.width),
+    videoHeight: num((video as { height?: number } | undefined)?.height),
+    replyToId: typeof replyStatus === "string" ? replyStatus : typeof replyStatus === "number" ? String(replyStatus) : null,
+    quoteOfId: quote?.id ? String(quote.id) : null,
     source: "fxtwitter",
     fetchedAt: isoNoMs(now),
   };

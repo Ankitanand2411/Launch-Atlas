@@ -12,7 +12,7 @@ Social Capital Inc. ([sociallcapital.com](https://www.sociallcapital.com)) runs 
 
 Those nine hero posts are public. So is a surprising amount of what they encode: the exact second they were published (hidden in the post ID), the same for their LinkedIn mirrors, the caption structure, the media format, and the shape of the response. Read across nine launches instead of one, the operating pattern shows.
 
-Launch Atlas is the reading. The aspect is **launches** — the hero video and the post that carries it, with amplification treated as a property of the video. The method is: write down what you expect before you look, collect everything public, compute the verdicts, and let one finding stand as the headline.
+Launch Atlas is two things. A **tool**: paste any launch post, or the founder's post plus the creators who amplified it, and it reads the launch live — exact timing, today's numbers, hooks, the amplification wave, the creator roster, and a score against Social Capital's playbook. And a **reading** of Social Capital's own nine launches with that tool: the aspect is **launches** (the hero video and the post that carries it, with amplification as a property of the video); the method is to write down what you expect before you look, collect everything public, compute the verdicts, and let one finding stand as the headline.
 
 **The headline** (generated from the data, not typed — see `/insight`):
 
@@ -82,7 +82,7 @@ seed (observed claims) ───┘       │
                                   │
                                   ▼
                   Next.js 15 (static) ── /  /launches/[slug]  /patterns  /network  /claims  /insight
-                  one dynamic route ──── /api/anatomy  (decode + free endpoints for any X post)  ──► /analyze
+                  two dynamic routes ─── /api/read (many posts → wave, roster, kinds), /api/anatomy (one post) ──► /analyze
 ```
 
 **Principles**
@@ -102,12 +102,12 @@ seed (observed claims) ───┘       │
 
 | Route | What it shows |
 |---|---|
-| `/` | The headline; the **launch clock** (weekday rows × US Eastern hour; X marks numbered in date order, LinkedIn mirrors as rings at their own minute; Wednesday and Friday drawn empty on purpose); the roster keyed to the clock |
+| `/` | **Paste a launch** (the front door), then the headline, the **launch clock** (weekday rows × US Eastern hour; X marks numbered in date order, LinkedIn mirrors as rings at their own minute; Wednesday and Friday drawn empty on purpose) and the roster keyed to the clock |
 | `/launches/[slug]` | One launch: caption with the leading hook marked, figures quoted, four-zone timing, LinkedIn gap, exact or ≈ counts, media facts, frames, timestamped transcript, sources |
 | `/patterns` | Nine launches side by side — the pattern is in the columns |
 | `/network` | Amplification shape from exact counts (quote share, likes per 1K views, followers) and the manual roster's repeat creators |
 | `/claims` | The company's public description over time: reach, roster, team size, growth, guarantee |
-| `/analyze` | Paste any X post: decoded timing, free-endpoint counts, hooks, and a seven-check reading against the nine |
+| `/analyze` | **Read a launch.** Paste one post, or a founder's post plus every creator post that amplified it. For each: exact time from the ID, counts and followers from the free endpoints, quote/reply/standalone, hooks. For the set: the wave (minutes after the founder), quote vs reply split, creator roster with follower tiers, totals, and the hero's seven-check reading against the nine. Every reading has a shareable `?ids=` URL |
 | `/insight` | The headline, what supports it, what cuts against it, why a launch team would care, the hypothesis board, what to test next, method and limits |
 
 ---
@@ -134,7 +134,7 @@ npm run analyze         # recompute everything; verdicts and the headline update
 
 Flags: `--only <slug>`, `--offline`, `--dry-run`, `--skip-download|--skip-transcribe|--skip-tag`, `--vision` (frames → founderOnCamera via Anthropic).
 
-**Deploy:** push to GitHub, import in Vercel, set `NEXT_PUBLIC_REPO_URL`. No other configuration; the site is static apart from `/api/anatomy`.
+**Deploy:** push to GitHub, import in Vercel, set `NEXT_PUBLIC_REPO_URL`. No other configuration; the site is static apart from the two read routes.
 
 ---
 
