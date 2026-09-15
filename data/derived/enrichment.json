@@ -1,0 +1,273 @@
+[
+  {
+    "slug": "icon",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "product"
+      ],
+      "primaryHook": "product",
+      "firstLine": "Excited to introduce Icon, The First AI Admaker.",
+      "figureInFirstThreeLines": false,
+      "capitalFigures": [],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.200Z",
+    "notes": [
+      "video not downloaded (dry run or --skip-download)",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "superblocks",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "product"
+      ],
+      "primaryHook": "product",
+      "firstLine": "I’m excited to introduce Clark, the first AI Agent to build internal enterprise apps.",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [
+        "$60M",
+        "$23M"
+      ],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.202Z",
+    "notes": [
+      "video not downloaded (dry run or --skip-download)",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "deel",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "traction",
+        "story"
+      ],
+      "primaryHook": "capital",
+      "firstLine": "Deel has raised $300M at a $17.3B valuation",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [
+        "$300M",
+        "$17.3B valuation",
+        "$10K",
+        "$1K",
+        "$1B"
+      ],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.202Z",
+    "notes": [
+      "no video: image-led post",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "cartesia",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "product"
+      ],
+      "primaryHook": "capital",
+      "firstLine": "We’ve raised $100M from Kleiner Perkins, Index Ventures, Lightspeed, and NVIDIA.",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [
+        "$100M"
+      ],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.202Z",
+    "notes": [
+      "video not downloaded (dry run or --skip-download)",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "gamma",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "traction",
+        "product"
+      ],
+      "primaryHook": "product",
+      "firstLine": "Today, as shared by The New York Times, we’re announcing two things:",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [
+        "$2.1B valuation",
+        "$100M ARR",
+        "$2M ARR"
+      ],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.202Z",
+    "notes": [
+      "video not downloaded (dry run or --skip-download)",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "airwallex",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "traction",
+        "story"
+      ],
+      "primaryHook": "capital",
+      "firstLine": "Stripe offered to acquire us for $1.2 billion when we had $2M in revenue.",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [
+        "$1.2 billion",
+        "$2M in revenue",
+        "$330M",
+        "$8B valuation",
+        "$1B ARR"
+      ],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.203Z",
+    "notes": [
+      "no video: image-led post",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "poly-ai",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "traction"
+      ],
+      "primaryHook": "capital",
+      "firstLine": "PolyAI has raised $200M from Nvidia, Khosla Ventures, and multiple top VCs.",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [
+        "$200M"
+      ],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.203Z",
+    "notes": [
+      "video not downloaded (dry run or --skip-download)",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "wispr-flow",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "product",
+        "stunt"
+      ],
+      "primaryHook": "stunt",
+      "firstLine": "We offered 5 people a Porsche 911 GT3 RS if they could get @WisprFlow to make a mistake",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [],
+      "cta": "Download now:",
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.203Z",
+    "notes": [
+      "video not downloaded (dry run or --skip-download)",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  },
+  {
+    "slug": "playerzero",
+    "video": null,
+    "frames": [],
+    "transcript": null,
+    "tags": {
+      "hooks": [
+        "capital",
+        "product"
+      ],
+      "primaryHook": "product",
+      "firstLine": "Introducing: PlayerZero",
+      "figureInFirstThreeLines": true,
+      "capitalFigures": [
+        "$20M"
+      ],
+      "cta": null,
+      "founderOnCamera": null,
+      "confidence": 0.5,
+      "source": "regex",
+      "model": null
+    },
+    "fullText": null,
+    "enrichedAt": "2026-09-15T07:51:55.206Z",
+    "notes": [
+      "video not downloaded (dry run or --skip-download)",
+      "hooks tagged by regex (dry run or --skip-tag)"
+    ]
+  }
+]

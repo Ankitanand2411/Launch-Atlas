@@ -26,3 +26,18 @@ Times are IST. Agent: Claude (claude.ai) driving the build in a sandbox; the hum
 - Build is fully static: 15 prerendered routes. Tests: 15 passing.
 - Human overrides: none. Next: Phase 2 (video download, ffprobe, Groq Whisper, LLM hook tags) on a machine with network
   access to video.twimg.com and api.groq.com, then Phase 4 (pick and verify the headline).
+
+## 2026-09-15 — Phase 2, enrichment pipeline (code; ≈60 min)
+- `scripts/enrich.ts`: per launch → download video → ffprobe (duration, frame, fps, audio, aspect) → three frames
+  (0.5 s, 3 s, 10 s, 640 px wide, committed under public/frames) → Groq Whisper `verbose_json` transcript → model hook
+  tags (Groq Llama JSON mode or Anthropic messages; `--vision` attaches frames for founderOnCamera). Each step caches
+  and is skipped when its artifact exists; every skip or failure is recorded in `notes` on the record.
+- Strict validation of model output (`validateTags`); two failed attempts fall back to regex tags in the same shape.
+- Hypotheses now read enrichment: H5 gains duration band + aspect; H4/H6/H9 switch to model tags when present and say so.
+- H4 refined after being rejected as written (5/9 first lines) → figure within the first three lines, 8/9. Logged in HYPOTHESES.md.
+- UI: launch page shows hooks with the leading hook marked, figures quoted, CTA, transcript (collapsible, timestamped),
+  length/frame/audio facts and frame strip when present; patterns adds Length and Leads-with columns and states the tag source.
+- 22 tests passing; static build unchanged (15 routes). Ran `enrich --dry-run` here (sandbox has no route to
+  video.twimg.com or api.groq.com); the real run happens on the human's machine.
+- Commits rewritten to the human's GitHub handle with Co-Authored-By: Claude trailers; origin set to
+  github.com/Ankitanand2411/Launch-Atlas. Push requires the human's credentials.

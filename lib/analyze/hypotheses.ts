@@ -1,5 +1,5 @@
-import type { EngagementRow, HypothesisResult, LaunchSeed, Post, TimingRow, Verdict } from "@/lib/types";
-import { tagCaption } from "./captions";
+import type { EngagementRow, Enrichment, HypothesisResult, LaunchSeed, Post, TimingRow, Verdict } from "@/lib/types";
+import { getTags } from "./hooks";
 
 const median = (xs: number[]) => {
   if (!xs.length) return null;
@@ -12,7 +12,7 @@ const r1 = (x: number) => Math.round(x * 10) / 10;
 const shareVerdict = (share: number, n: number): Verdict => (n < 3 ? "untested" : share >= 0.85 ? "supported" : share >= 0.6 ? "mixed" : "rejected");
 const pct = (a: number, b: number) => `${a}/${b}`;
 
-export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing: TimingRow[], engagement: EngagementRow[], now = new Date()): HypothesisResult[] {
+export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing: TimingRow[], engagement: EngagementRow[], enrichment: Enrichment[] = [], now = new Date()): HypothesisResult[] {
   const computedAt = now.toISOString();
   const n = launches.length;
   const out: HypothesisResult[] = [];
@@ -65,43 +65,51 @@ export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing:
     });
   }
 
-  const tags = launches.map((l) => ({ client: l.client, ...tagCaption(l.captionExcerpt) }));
+  const tags = launches.map((l) => ({ client: l.client, ...getTags(l, enrichment) }));
+  const modelTagged = tags.filter((t) => t.source === "model").length;
+  const tagSource = modelTagged === n ? "model-tagged" : modelTagged === 0 ? "regex over the visible caption, provisional" : `${modelTagged}/${n} model-tagged, rest regex`;
 
-  // H4 — quotable first line (provisional, regex on caption)
+  // H4 — figure up front
   {
-    const hits = tags.filter((t) => t.firstLineHasNumber || t.firstLineIsDare);
+    const three = tags.filter((t) => t.figureInFirstThreeLines);
+    const first = tags.filter((t) => /\d/.test(t.firstLine));
     out.push({
       code: "H4", computedAt,
-      statement: "The caption's first line is a standalone number or dare, built to be quote-posted.",
-      verdict: shareVerdict(hits.length / n, n),
-      summary: `${pct(hits.length, n)} first lines contain a figure or a dare (regex, provisional — LLM tagging in Phase 2).`,
-      evidence: { firstLines: tags.map((t) => ({ client: t.client, firstLine: t.firstLine, hasNumber: t.firstLineHasNumber, isDare: t.firstLineIsDare })) },
+      statement: "A money, valuation, revenue or scale figure appears within the first three lines of the caption.",
+      verdict: shareVerdict(three.length / n, n),
+      summary: `${pct(three.length, n)} captions put a figure in the first three lines${n - three.length ? ` (exception: ${tags.filter((t) => !t.figureInFirstThreeLines).map((t) => t.client).join(", ")})` : ""}; only ${pct(first.length, n)} put it in the first line itself. Tags: ${tagSource}.`,
+      evidence: { perLaunch: tags.map((t) => ({ client: t.client, firstLine: t.firstLine, figureInFirstThreeLines: t.figureInFirstThreeLines, capitalFigures: t.capitalFigures, source: t.source })) },
     });
   }
 
-  // H5 — video fingerprint (provisional until ffprobe)
+  // H5 — video fingerprint
   {
     const videos = launches.filter((l) => l.mediaType === "video");
     const images = launches.filter((l) => l.mediaType === "image");
+    const probes = videos.map((l) => enrichment.find((e) => e.slug === l.slug)?.video ?? null).filter((v): v is NonNullable<typeof v> => v != null);
+    const durations = probes.map((v) => v.durationS);
+    const aspects = probes.reduce<Record<string, number>>((acc, v) => ((acc[v.aspect] = (acc[v.aspect] ?? 0) + 1), acc), {});
+    const band = durations.length ? `${Math.min(...durations)}–${Math.max(...durations)} s (median ${median(durations)} s)` : "pending";
+    const verdict: Verdict = !probes.length ? "untested" : images.length ? "mixed" : Object.keys(aspects).length === 1 && Math.max(...durations) <= 2 * Math.min(...durations) ? "supported" : "mixed";
     out.push({
       code: "H5", computedAt,
       statement: "Every hero post carries a natively uploaded 16:9 video in a fixed duration band.",
-      verdict: images.length ? "mixed" : "untested",
-      summary: `${pct(videos.length, n)} hero posts are native videos; ${images.length} are image-led founder stories (${images.map((l) => l.client).join(", ")}). Duration and format pending Phase 2 (ffprobe).`,
-      evidence: { videos: videos.map((l) => l.client), images: images.map((l) => l.client) },
+      verdict,
+      summary: `${pct(videos.length, n)} hero posts are native videos; ${images.length} are image-led founder stories (${images.map((l) => l.client).join(", ")}). ${probes.length ? `Probed ${pct(probes.length, videos.length)} videos: aspect ${Object.entries(aspects).map(([a, c]) => `${a} ×${c}`).join(", ")}; duration ${band}.` : "Duration and format pending enrichment (ffprobe)."}`,
+      evidence: { videos: videos.map((l) => l.client), images: images.map((l) => l.client), probes: probes.map((v, i) => ({ client: videos.filter((l) => enrichment.find((e) => e.slug === l.slug)?.video)[i]?.client, durationS: v.durationS, aspect: v.aspect, width: v.width, height: v.height })) },
     });
   }
 
-  // H6 — stacked news (provisional)
+  // H6 — stacked news
   {
-    const withCapital = tags.filter((t) => t.funding || t.traction);
-    const stacked = tags.filter((t) => t.hooks >= 2);
+    const withCapital = tags.filter((t) => t.hooks.includes("capital") || t.hooks.includes("traction"));
+    const stacked = tags.filter((t) => t.hooks.filter((h) => h !== "other").length >= 2);
     out.push({
       code: "H6", computedAt,
-      statement: "Each hero post bundles two or more news hooks (capital, traction, product, story) so amplifiers have multiple angles.",
+      statement: "Each hero post bundles two or more news hooks (capital, traction, product, story, stunt) so amplifiers have multiple angles.",
       verdict: shareVerdict(stacked.length / n, n),
-      summary: `${pct(withCapital.length, n)} captions carry a funding or traction figure; ${pct(stacked.length, n)} stack two or more hooks (regex over visible caption, provisional).`,
-      evidence: { perLaunch: tags.map((t) => ({ client: t.client, funding: t.funding, traction: t.traction, product: t.product, story: t.story, stunt: t.stunt, hooks: t.hooks })) },
+      summary: `${pct(withCapital.length, n)} posts carry a capital or traction hook; ${pct(stacked.length, n)} stack two or more hooks${n - stacked.length ? ` (single-hook: ${tags.filter((t) => t.hooks.filter((h) => h !== "other").length < 2).map((t) => t.client).join(", ")})` : ""}. Tags: ${tagSource}.`,
+      evidence: { perLaunch: tags.map((t) => ({ client: t.client, hooks: t.hooks, primaryHook: t.primaryHook, source: t.source, confidence: t.confidence })) },
     });
   }
 
@@ -111,7 +119,7 @@ export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing:
 
   // H9 — reply engineering (descriptive in Phase 1)
   {
-    const rows = engagement.filter((e) => e.replyRate != null).map((e) => ({ client: e.client, replyRate: e.replyRate as number, mediaType: e.mediaType, hook: tags.find((t) => t.client === e.client)?.stunt ? "stunt" : tags.find((t) => t.client === e.client)?.story ? "story" : "launch" }));
+    const rows = engagement.filter((e) => e.replyRate != null).map((e) => { const t = tags.find((x) => x.client === e.client)!; const hook = t.hooks.includes("stunt") ? "stunt" : t.hooks.includes("story") ? "story" : "launch"; return { client: e.client, replyRate: e.replyRate as number, mediaType: e.mediaType, hook, primaryHook: t.primaryHook }; });
     const byHook = rows.reduce<Record<string, number[]>>((acc, r) => ((acc[r.hook] ??= []).push(r.replyRate), acc), {});
     const med = median(rows.map((r) => r.replyRate));
     const top = [...rows].sort((a, b) => b.replyRate - a.replyRate)[0];
@@ -119,7 +127,7 @@ export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing:
       code: "H9", computedAt,
       statement: "Stunt or challenge hooks produce reply rates far above stat-led hooks; replies are the engagement being optimised.",
       verdict: rows.length ? "mixed" : "untested",
-      summary: top ? `Median reply rate ${Math.round((med ?? 0) * 100)}% of likes; top is ${top.client} at ${Math.round(top.replyRate * 100)}% (${top.hook} hook). By hook: ${Object.entries(byHook).map(([h, v]) => `${h} ${Math.round((median(v) ?? 0) * 100)}%`).join(", ")}. Hook tags provisional.` : "No engagement data.",
+      summary: top ? `Median reply rate ${Math.round((med ?? 0) * 100)}% of likes; top is ${top.client} at ${Math.round(top.replyRate * 100)}% (${top.hook} hook). By hook: ${Object.entries(byHook).map(([h, v]) => `${h} ${Math.round((median(v) ?? 0) * 100)}%`).join(", ")}. Tags: ${tagSource}.` : "No engagement data.",
       evidence: { rows, medianReplyRate: med },
     });
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T07:30:45.693Z",
+  "generatedAt": "2026-09-15T07:52:50.556Z",
   "launchCount": 9,
   "timing": [
     {
@@ -215,7 +215,7 @@
   "hypotheses": [
     {
       "code": "H1",
-      "computedAt": "2026-09-15T07:30:45.690Z",
+      "computedAt": "2026-09-15T07:52:50.554Z",
       "statement": "The hero post is published from the founder's personal account, not the brand account.",
       "verdict": "supported",
       "summary": "8/9 hero posts come from a founder's personal account; exception: Poly AI (brand account).",
@@ -237,7 +237,7 @@
     },
     {
       "code": "H2",
-      "computedAt": "2026-09-15T07:30:45.690Z",
+      "computedAt": "2026-09-15T07:52:50.554Z",
       "statement": "When a LinkedIn mirror exists, it goes live within 15 minutes of the X post.",
       "verdict": "supported",
       "summary": "6/9 launches have a LinkedIn mirror on the case page; 6/6 of those land within 15 min of the X post (median 2.6 min, max 8.8 min; LinkedIn went first on 2).",
@@ -277,7 +277,7 @@
     },
     {
       "code": "H3",
-      "computedAt": "2026-09-15T07:30:45.690Z",
+      "computedAt": "2026-09-15T07:52:50.554Z",
       "statement": "Launches land Monday–Thursday inside a US morning-to-lunch window (08:00–13:30 ET), in two slots: East-coast breakfast and East-coast lunch.",
       "verdict": "supported",
       "summary": "9/9 on Mon–Thu (Tue 4, Thu 1, Mon 4; never Wed or Fri); 9/9 between 08:00 and 13:30 ET — 3 at 08:00–09:15 ET, 5 at 12:00–13:20 ET, outlier Poly AI 10:59 ET. Three posts (Cartesia, Poly AI, PlayerZero) sit within 3 min of 16:00 UTC across a US daylight-saving change, which hints the scheduling clock is not US-local.",
@@ -390,75 +390,109 @@
     },
     {
       "code": "H4",
-      "computedAt": "2026-09-15T07:30:45.690Z",
-      "statement": "The caption's first line is a standalone number or dare, built to be quote-posted.",
-      "verdict": "rejected",
-      "summary": "5/9 first lines contain a figure or a dare (regex, provisional — LLM tagging in Phase 2).",
+      "computedAt": "2026-09-15T07:52:50.554Z",
+      "statement": "A money, valuation, revenue or scale figure appears within the first three lines of the caption.",
+      "verdict": "supported",
+      "summary": "8/9 captions put a figure in the first three lines (exception: Icon); only 5/9 put it in the first line itself. Tags: regex over the visible caption, provisional.",
       "evidence": {
-        "firstLines": [
+        "perLaunch": [
           {
             "client": "Icon",
             "firstLine": "Excited to introduce Icon, The First AI Admaker.",
-            "hasNumber": false,
-            "isDare": false
+            "figureInFirstThreeLines": false,
+            "capitalFigures": [],
+            "source": "regex"
           },
           {
             "client": "Superblocks",
             "firstLine": "I’m excited to introduce Clark, the first AI Agent to build internal enterprise apps.",
-            "hasNumber": false,
-            "isDare": false
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [
+              "$60M",
+              "$23M"
+            ],
+            "source": "regex"
           },
           {
             "client": "Deel",
             "firstLine": "Deel has raised $300M at a $17.3B valuation",
-            "hasNumber": true,
-            "isDare": false
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [
+              "$300M",
+              "$17.3B valuation",
+              "$10K",
+              "$1K",
+              "$1B"
+            ],
+            "source": "regex"
           },
           {
             "client": "Cartesia",
             "firstLine": "We’ve raised $100M from Kleiner Perkins, Index Ventures, Lightspeed, and NVIDIA.",
-            "hasNumber": true,
-            "isDare": false
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [
+              "$100M"
+            ],
+            "source": "regex"
           },
           {
             "client": "Gamma",
             "firstLine": "Today, as shared by The New York Times, we’re announcing two things:",
-            "hasNumber": false,
-            "isDare": false
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [
+              "$2.1B valuation",
+              "$100M ARR",
+              "$2M ARR"
+            ],
+            "source": "regex"
           },
           {
             "client": "Airwallex",
             "firstLine": "Stripe offered to acquire us for $1.2 billion when we had $2M in revenue.",
-            "hasNumber": true,
-            "isDare": false
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [
+              "$1.2 billion",
+              "$2M in revenue",
+              "$330M",
+              "$8B valuation",
+              "$1B ARR"
+            ],
+            "source": "regex"
           },
           {
             "client": "Poly AI",
             "firstLine": "PolyAI has raised $200M from Nvidia, Khosla Ventures, and multiple top VCs.",
-            "hasNumber": true,
-            "isDare": false
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [
+              "$200M"
+            ],
+            "source": "regex"
           },
           {
             "client": "Wispr Flow",
             "firstLine": "We offered 5 people a Porsche 911 GT3 RS if they could get @WisprFlow to make a mistake",
-            "hasNumber": true,
-            "isDare": true
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [],
+            "source": "regex"
           },
           {
             "client": "PlayerZero",
             "firstLine": "Introducing: PlayerZero",
-            "hasNumber": false,
-            "isDare": false
+            "figureInFirstThreeLines": true,
+            "capitalFigures": [
+              "$20M"
+            ],
+            "source": "regex"
           }
         ]
       }
     },
     {
       "code": "H5",
-      "computedAt": "2026-09-15T07:30:45.690Z",
+      "computedAt": "2026-09-15T07:52:50.554Z",
       "statement": "Every hero post carries a natively uploaded 16:9 video in a fixed duration band.",
-      "verdict": "mixed",
-      "summary": "7/9 hero posts are native videos; 2 are image-led founder stories (Deel, Airwallex). Duration and format pending Phase 2 (ffprobe).",
+      "verdict": "untested",
+      "summary": "7/9 hero posts are native videos; 2 are image-led founder stories (Deel, Airwallex). Duration and format pending enrichment (ffprobe).",
       "evidence": {
         "videos": [
           "Icon",
@@ -472,104 +506,117 @@
         "images": [
           "Deel",
           "Airwallex"
-        ]
+        ],
+        "probes": []
       }
     },
     {
       "code": "H6",
-      "computedAt": "2026-09-15T07:30:45.690Z",
-      "statement": "Each hero post bundles two or more news hooks (capital, traction, product, story) so amplifiers have multiple angles.",
+      "computedAt": "2026-09-15T07:52:50.554Z",
+      "statement": "Each hero post bundles two or more news hooks (capital, traction, product, story, stunt) so amplifiers have multiple angles.",
       "verdict": "supported",
-      "summary": "8/9 captions carry a funding or traction figure; 9/9 stack two or more hooks (regex over visible caption, provisional).",
+      "summary": "8/9 posts carry a capital or traction hook; 9/9 stack two or more hooks. Tags: regex over the visible caption, provisional.",
       "evidence": {
         "perLaunch": [
           {
             "client": "Icon",
-            "funding": true,
-            "traction": false,
-            "product": true,
-            "story": false,
-            "stunt": false,
-            "hooks": 2
+            "hooks": [
+              "capital",
+              "product"
+            ],
+            "primaryHook": "product",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "Superblocks",
-            "funding": true,
-            "traction": false,
-            "product": true,
-            "story": false,
-            "stunt": false,
-            "hooks": 2
+            "hooks": [
+              "capital",
+              "product"
+            ],
+            "primaryHook": "product",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "Deel",
-            "funding": true,
-            "traction": true,
-            "product": false,
-            "story": true,
-            "stunt": false,
-            "hooks": 3
+            "hooks": [
+              "capital",
+              "traction",
+              "story"
+            ],
+            "primaryHook": "capital",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "Cartesia",
-            "funding": true,
-            "traction": false,
-            "product": true,
-            "story": false,
-            "stunt": false,
-            "hooks": 2
+            "hooks": [
+              "capital",
+              "product"
+            ],
+            "primaryHook": "capital",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "Gamma",
-            "funding": true,
-            "traction": true,
-            "product": true,
-            "story": false,
-            "stunt": false,
-            "hooks": 3
+            "hooks": [
+              "capital",
+              "traction",
+              "product"
+            ],
+            "primaryHook": "product",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "Airwallex",
-            "funding": true,
-            "traction": true,
-            "product": false,
-            "story": true,
-            "stunt": false,
-            "hooks": 3
+            "hooks": [
+              "capital",
+              "traction",
+              "story"
+            ],
+            "primaryHook": "capital",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "Poly AI",
-            "funding": true,
-            "traction": true,
-            "product": false,
-            "story": false,
-            "stunt": false,
-            "hooks": 2
+            "hooks": [
+              "capital",
+              "traction"
+            ],
+            "primaryHook": "capital",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "Wispr Flow",
-            "funding": false,
-            "traction": false,
-            "product": true,
-            "story": false,
-            "stunt": true,
-            "hooks": 2
+            "hooks": [
+              "product",
+              "stunt"
+            ],
+            "primaryHook": "stunt",
+            "source": "regex",
+            "confidence": 0.5
           },
           {
             "client": "PlayerZero",
-            "funding": true,
-            "traction": false,
-            "product": true,
-            "story": false,
-            "stunt": false,
-            "hooks": 2
+            "hooks": [
+              "capital",
+              "product"
+            ],
+            "primaryHook": "product",
+            "source": "regex",
+            "confidence": 0.5
           }
         ]
       }
     },
     {
       "code": "H7",
-      "computedAt": "2026-09-15T07:30:45.690Z",
+      "computedAt": "2026-09-15T07:52:50.554Z",
       "statement": "A repeat core of creator accounts appears across ≥3 launches; their posts arrive in a wave hours after the founder post.",
       "verdict": "untested",
       "summary": "Needs amplifier data (quote posts, replies, reposts). Stretch layer.",
@@ -577,7 +624,7 @@
     },
     {
       "code": "H8",
-      "computedAt": "2026-09-15T07:30:45.690Z",
+      "computedAt": "2026-09-15T07:52:50.554Z",
       "statement": "Stated reach and roster size stepped up in discrete jumps alongside a positioning change.",
       "verdict": "untested",
       "summary": "Needs Wayback Machine snapshots. Bonus layer.",
@@ -585,65 +632,74 @@
     },
     {
       "code": "H9",
-      "computedAt": "2026-09-15T07:30:45.690Z",
+      "computedAt": "2026-09-15T07:52:50.554Z",
       "statement": "Stunt or challenge hooks produce reply rates far above stat-led hooks; replies are the engagement being optimised.",
       "verdict": "mixed",
-      "summary": "Median reply rate 20% of likes; top is Wispr Flow at 42% (stunt hook). By hook: launch 20%, story 10%, stunt 40%. Hook tags provisional.",
+      "summary": "Median reply rate 20% of likes; top is Wispr Flow at 42% (stunt hook). By hook: launch 20%, story 10%, stunt 40%. Tags: regex over the visible caption, provisional.",
       "evidence": {
         "rows": [
           {
             "client": "Icon",
             "replyRate": 0.175,
             "mediaType": "video",
-            "hook": "launch"
+            "hook": "launch",
+            "primaryHook": "product"
           },
           {
             "client": "Superblocks",
             "replyRate": 0.144,
             "mediaType": "video",
-            "hook": "launch"
+            "hook": "launch",
+            "primaryHook": "product"
           },
           {
             "client": "Deel",
             "replyRate": 0.086,
             "mediaType": "image",
-            "hook": "story"
+            "hook": "story",
+            "primaryHook": "capital"
           },
           {
             "client": "Cartesia",
             "replyRate": 0.165,
             "mediaType": "video",
-            "hook": "launch"
+            "hook": "launch",
+            "primaryHook": "capital"
           },
           {
             "client": "Gamma",
             "replyRate": 0.145,
             "mediaType": "video",
-            "hook": "launch"
+            "hook": "launch",
+            "primaryHook": "product"
           },
           {
             "client": "Airwallex",
             "replyRate": 0.051,
             "mediaType": "image",
-            "hook": "story"
+            "hook": "story",
+            "primaryHook": "capital"
           },
           {
             "client": "Poly AI",
             "replyRate": 0.313,
             "mediaType": "video",
-            "hook": "launch"
+            "hook": "launch",
+            "primaryHook": "capital"
           },
           {
             "client": "Wispr Flow",
             "replyRate": 0.417,
             "mediaType": "video",
-            "hook": "stunt"
+            "hook": "stunt",
+            "primaryHook": "stunt"
           },
           {
             "client": "PlayerZero",
             "replyRate": 0.167,
             "mediaType": "video",
-            "hook": "launch"
+            "hook": "launch",
+            "primaryHook": "product"
           }
         ],
         "medianReplyRate": 0.2

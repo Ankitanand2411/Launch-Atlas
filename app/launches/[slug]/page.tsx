@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { launches, getLaunch, getPosts, getTiming, getEngagement, monthLabel, dateLabel } from "@/lib/data";
+import { launches, getLaunch, getPosts, getTiming, getEngagement, getEnrichment, enrichment, monthLabel, dateLabel } from "@/lib/data";
 import { formatCompact } from "@/lib/metrics";
-import { tagCaption } from "@/lib/analyze/captions";
+import { getTags } from "@/lib/analyze/hooks";
+import { formatDuration } from "@/lib/enrich/ffprobe";
 
 export function generateStaticParams() {
   return launches.map((l) => ({ slug: l.slug }));
@@ -30,8 +31,10 @@ export default async function LaunchPage({ params }: { params: Promise<{ slug: s
   const t = getTiming(slug)!;
   const e = getEngagement(slug)!;
   const [x, li] = [getPosts(slug).find((p) => p.platform === "x")!, getPosts(slug).find((p) => p.platform === "linkedin") ?? null];
-  const tags = tagCaption(l.captionExcerpt);
-  const hooks = (["funding", "traction", "product", "story", "stunt"] as const).filter((k) => tags[k]);
+  const en = getEnrichment(slug);
+  const tags = getTags(l, enrichment);
+  const caption = en?.fullText ?? l.captionExcerpt;
+  const captionTruncated = en?.fullText ? false : l.captionTruncated;
 
   return (
     <div className="pt-12 sm:pt-16">
@@ -44,19 +47,39 @@ export default async function LaunchPage({ params }: { params: Promise<{ slug: s
       <div className="mt-12 grid gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
         <section>
           <h2 className="section-title">The hero post</h2>
-          <blockquote className="mt-4 whitespace-pre-wrap text-[17px] leading-7 measure">{l.captionExcerpt}{l.captionTruncated ? " …" : ""}</blockquote>
+          <blockquote className="mt-4 whitespace-pre-wrap text-[17px] leading-7 measure">{caption}{captionTruncated ? " …" : ""}</blockquote>
           <p className="mt-3 text-[13px] leading-5 text-ink-2">
-            {l.captionTruncated ? "Excerpt as shown in the embed; " : ""}<a className="underline hover:text-ink" href={l.xUrl}>read the full post on X</a>
+            {captionTruncated ? "Excerpt as shown in the embed; " : ""}<a className="underline hover:text-ink" href={l.xUrl}>read the full post on X</a>
             {l.videoUrl && <> or <a className="underline hover:text-ink" href={l.videoUrl}>open the video file</a></>}.
           </p>
           <div className="mt-8">
-            <h3 className="text-[15px] font-medium">Hooks in the caption</h3>
-            <p className="text-[13px] leading-5 text-ink-2 mb-2">Provisional, regex over the visible caption. Phase 2 tags the transcript with a model.</p>
+            <h3 className="text-[15px] font-medium">Hooks</h3>
+            <p className="text-[13px] leading-5 text-ink-2 mb-2">
+              {tags.source === "model" ? `Tagged by ${tags.model} over the caption${en?.transcript ? " and transcript" : ""}; confidence ${Math.round(tags.confidence * 100)}%.` : "Regex over the visible caption, provisional until enrichment runs."}
+            </p>
             <ul className="flex flex-wrap gap-2">
-              {hooks.length ? hooks.map((h) => <li key={h} className="rounded-full bg-surface px-2.5 py-0.5 text-[13px]">{h}</li>) : <li className="text-ink-2 text-[13px]">none detected</li>}
+              {tags.hooks.map((h) => (
+                <li key={h} className={`rounded-full px-2.5 py-0.5 text-[13px] ${h === tags.primaryHook ? "bg-ink text-paper" : "bg-surface"}`}>{h}{h === tags.primaryHook ? ", leads" : ""}</li>
+              ))}
             </ul>
-            <p className="mt-3 text-[15px] leading-6 measure"><span className="text-ink-2">First line:</span> {tags.firstLine}</p>
+            <dl className="mt-4 text-[15px] leading-6 measure">
+              <div><dt className="inline text-ink-2">First line: </dt><dd className="inline">{tags.firstLine}</dd></div>
+              <div><dt className="inline text-ink-2">Figure in the first three lines: </dt><dd className="inline">{tags.figureInFirstThreeLines ? "yes" : "no"}</dd></div>
+              {tags.capitalFigures.length > 0 && <div><dt className="inline text-ink-2">Figures quoted: </dt><dd className="inline">{tags.capitalFigures.join("; ")}</dd></div>}
+              {tags.cta && <div><dt className="inline text-ink-2">Call to action: </dt><dd className="inline">{tags.cta}</dd></div>}
+            </dl>
           </div>
+
+          {en?.transcript && (
+            <details className="mt-8 group">
+              <summary className="cursor-pointer text-[15px] font-medium">Transcript <span className="text-ink-2 font-normal">({en.transcript.text.split(/\s+/).length} words, {en.transcript.model})</span></summary>
+              <ol className="mt-3 measure text-[15px] leading-7">
+                {en.transcript.segments.map((seg, i) => (
+                  <li key={i} className="grid grid-cols-[52px_minmax(0,1fr)] gap-2"><span className="num text-ink-2">{formatDuration(seg.start)}</span><span>{seg.text}</span></li>
+                ))}
+              </ol>
+            </details>
+          )}
         </section>
 
         <section>
@@ -84,7 +107,25 @@ export default async function LaunchPage({ params }: { params: Promise<{ slug: s
 
           <h2 className="section-title mt-10">Media</h2>
           <div className="mt-2">
-            <Fact label="Type">{l.mediaType}{l.videoUrl ? <span className="text-ink-2"> — native upload, {l.videoUrl.includes("ext_tw_video") ? "older ext_tw_video path" : "amplify_video path"}</span> : null}</Fact>
+            <Fact label="Type">{l.mediaType}{l.videoUrl ? <span className="text-ink-2"> — native upload</span> : null}</Fact>
+            {en?.video && (
+              <div className="grid grid-cols-3">
+                <Fact label="Length">{formatDuration(en.video.durationS)}</Fact>
+                <Fact label="Frame">{en.video.width}×{en.video.height}, {en.video.aspect}</Fact>
+                <Fact label="Audio">{en.video.hasAudio ? "yes" : "none"}</Fact>
+              </div>
+            )}
+            {en?.video && <p className="mt-2 text-[13px] leading-5 text-ink-2">Probed from the rendition the case page exposes; the source upload may be larger.</p>}
+            {en && en.frames.length > 0 && (
+              <ul className="mt-4 grid grid-cols-3 gap-2">
+                {en.frames.map((f) => (
+                  <li key={f}>
+                    <img src={f} alt={`Frame at ${f.match(/-([\d.]+)\.jpg$/)?.[1] ?? ""} s`} className="w-full h-auto border border-rule" loading="lazy" />
+                    <span className="block mt-1 text-[13px] text-ink-2 num">{f.match(/-([\d.]+)\.jpg$/)?.[1]} s</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <h2 className="section-title mt-10">Sources</h2>

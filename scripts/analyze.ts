@@ -10,16 +10,18 @@ import { buildPosts } from "@/lib/analyze/build-posts";
 import { buildTiming } from "@/lib/analyze/timing";
 import { buildEngagement } from "@/lib/analyze/engagement";
 import { computeHypotheses } from "@/lib/analyze/hypotheses";
-import type { Analysis, LaunchSeed } from "@/lib/types";
+import type { Analysis, Enrichment, LaunchSeed } from "@/lib/types";
 
 const ROOT = process.cwd();
 const IN = path.join(ROOT, "data/derived/launches.json");
 const launches: LaunchSeed[] = JSON.parse(fs.readFileSync(IN, "utf8"));
+const ENRICH = path.join(ROOT, "data/derived/enrichment.json");
+const enrichment: Enrichment[] = fs.existsSync(ENRICH) ? JSON.parse(fs.readFileSync(ENRICH, "utf8")) : [];
 
 const posts = buildPosts(launches, ROOT);
 const timing = buildTiming(launches, posts);
 const engagement = buildEngagement(launches, posts);
-const hypotheses = computeHypotheses(launches, posts, timing, engagement);
+const hypotheses = computeHypotheses(launches, posts, timing, engagement, enrichment);
 
 const analysis: Analysis = { generatedAt: new Date().toISOString(), launchCount: launches.length, timing, engagement, hypotheses };
 fs.writeFileSync(path.join(ROOT, "data/derived/posts.json"), JSON.stringify(posts, null, 2) + "\n");

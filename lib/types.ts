@@ -107,3 +107,59 @@ export interface Analysis {
   engagement: EngagementRow[];
   hypotheses: HypothesisResult[];
 }
+
+/* ---------- Phase 2: enrichment ---------- */
+
+export type HookType = "capital" | "traction" | "product" | "story" | "stunt" | "other";
+
+export interface HookTags {
+  /** Distinct hooks present anywhere in the caption or transcript. */
+  hooks: HookType[];
+  /** What the first line leads with. */
+  primaryHook: HookType;
+  firstLine: string;
+  /** A money, valuation, revenue, or scale figure appears within the first three lines. */
+  figureInFirstThreeLines: boolean;
+  /** Verbatim figures, e.g. "$2.1B valuation", "$100M ARR". */
+  capitalFigures: string[];
+  cta: string | null;
+  founderOnCamera: boolean | null;
+  /** Model's self-reported confidence, 0–1. Regex tags report 0.5. */
+  confidence: number;
+  source: "model" | "regex";
+  model: string | null;
+}
+
+export interface VideoProbe {
+  durationS: number;
+  width: number;
+  height: number;
+  fps: number | null;
+  hasAudio: boolean;
+  aspect: "16:9" | "9:16" | "1:1" | "4:3" | "other";
+  bytes: number | null;
+  /** The variant that was probed; the case page exposes one rendition, not necessarily the source. */
+  variantUrl: string;
+}
+
+export interface TranscriptSegment { start: number; end: number; text: string }
+
+export interface Transcript {
+  text: string;
+  language: string | null;
+  segments: TranscriptSegment[];
+  model: string;
+}
+
+export interface Enrichment {
+  slug: string;
+  video: VideoProbe | null;
+  /** Public paths under /frames, e.g. "/frames/gamma-0.5.jpg". */
+  frames: string[];
+  transcript: Transcript | null;
+  tags: HookTags | null;
+  /** Full caption when an override supplied it; otherwise null (excerpt lives on the launch). */
+  fullText: string | null;
+  enrichedAt: string;
+  notes: string[];
+}

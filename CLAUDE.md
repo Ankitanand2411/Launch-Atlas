@@ -23,8 +23,10 @@ hypotheses (HYPOTHESES.md) to surface one operational insight about how the comp
 ## Commands
 - `npm run discover -- --offline`  seed → data/derived/launches.json (no network)
 - `npm run discover`               live crawl of sociallcapital.com/work (+ raw HTML cache)
-- `npm run analyze`                decode, merge overrides, compute timing/engagement/hypotheses
-- `npm run pipeline`               discover (offline) + analyze
+- `npm run enrich`                 download videos, ffprobe, frames, Groq Whisper, model hook tags → enrichment.json
+  (`--dry-run` for no network; `--only <slug>`; `--vision` sends frames to Anthropic)
+- `npm run analyze`                decode, merge overrides, read enrichment, compute timing/engagement/hypotheses
+- `npm run pipeline`               discover (offline) + enrich (dry) + analyze
 - `npm test` · `npm run dev` · `npm run build`
 
 ## Out of scope

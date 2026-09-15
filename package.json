@@ -9,7 +9,8 @@
     "test": "vitest run",
     "discover": "tsx scripts/discover.ts",
     "analyze": "tsx scripts/analyze.ts",
-    "pipeline": "npm run discover -- --offline && npm run analyze"
+    "pipeline": "npm run discover -- --offline && npm run enrich -- --dry-run && npm run analyze",
+    "enrich": "tsx scripts/enrich.ts"
   },
   "keywords": [],
   "author": "",
