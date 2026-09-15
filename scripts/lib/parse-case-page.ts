@@ -39,22 +39,21 @@ export function parseCasePage(html: string): ParsedCasePage {
   const client = $("h1").first().text().trim() || null;
   const month = monthToIso(text);
 
-  let xUrl: string | null = null;
-  let authorHandle: string | null = null;
+  // Collected inside cheerio callbacks; typed as a record so TS does not narrow to `never`.
+  const found: { xUrl: string | null; authorHandle: string | null; linkedinUrl: string | null } = { xUrl: null, authorHandle: null, linkedinUrl: null };
   $("a[href*='/status/']").each((_, a) => {
     const href = $(a).attr("href") ?? "";
     const parsed = parseXStatus(href);
-    if (parsed && !xUrl) {
-      xUrl = `https://x.com/${parsed.handle}/status/${parsed.id}`;
-      authorHandle = parsed.handle;
+    if (parsed && !found.xUrl) {
+      found.xUrl = `https://x.com/${parsed.handle}/status/${parsed.id}`;
+      found.authorHandle = parsed.handle;
     }
   });
-
-  let linkedinUrl: string | null = null;
   $("a[href*='linkedin.com/posts/']").each((_, a) => {
     const href = $(a).attr("href") ?? "";
-    if (parseLinkedInActivityId(href) && !linkedinUrl) linkedinUrl = href.split("?")[0];
+    if (parseLinkedInActivityId(href) && !found.linkedinUrl) found.linkedinUrl = href.split("?")[0];
   });
+  const { xUrl, authorHandle, linkedinUrl } = found;
 
   const videoMatch = html.match(/https:\/\/video\.twimg\.com\/[^\s"'<>]+\.mp4(?:\?[^\s"'<>]*)?/);
   const videoUrl = videoMatch ? videoMatch[0] : null;
