@@ -1,0 +1,653 @@
+{
+  "generatedAt": "2026-09-15T07:30:45.693Z",
+  "launchCount": 9,
+  "timing": [
+    {
+      "slug": "icon",
+      "client": "Icon",
+      "xPostedAtUtc": "2025-02-04T17:55:47Z",
+      "weekdayUtc": "Tue",
+      "weekdayEt": "Tue",
+      "utcClock": "17:55",
+      "etClock": "12:55",
+      "ptClock": "09:55",
+      "istClock": "23:25",
+      "etMinutes": 775,
+      "linkedinPostedAtUtc": "2025-02-04T17:55:39Z",
+      "linkedinMinusXMin": -0.1
+    },
+    {
+      "slug": "superblocks",
+      "client": "Superblocks",
+      "xPostedAtUtc": "2025-05-27T17:20:34Z",
+      "weekdayUtc": "Tue",
+      "weekdayEt": "Tue",
+      "utcClock": "17:20",
+      "etClock": "13:20",
+      "ptClock": "10:20",
+      "istClock": "22:50",
+      "etMinutes": 800,
+      "linkedinPostedAtUtc": null,
+      "linkedinMinusXMin": null
+    },
+    {
+      "slug": "deel",
+      "client": "Deel",
+      "xPostedAtUtc": "2025-10-16T13:06:17Z",
+      "weekdayUtc": "Thu",
+      "weekdayEt": "Thu",
+      "utcClock": "13:06",
+      "etClock": "09:06",
+      "ptClock": "06:06",
+      "istClock": "18:36",
+      "etMinutes": 546,
+      "linkedinPostedAtUtc": "2025-10-16T12:57:30Z",
+      "linkedinMinusXMin": -8.8
+    },
+    {
+      "slug": "cartesia",
+      "client": "Cartesia",
+      "xPostedAtUtc": "2025-10-28T16:00:53Z",
+      "weekdayUtc": "Tue",
+      "weekdayEt": "Tue",
+      "utcClock": "16:00",
+      "etClock": "12:00",
+      "ptClock": "09:00",
+      "istClock": "21:30",
+      "etMinutes": 720,
+      "linkedinPostedAtUtc": "2025-10-28T16:03:13Z",
+      "linkedinMinusXMin": 2.3
+    },
+    {
+      "slug": "gamma",
+      "client": "Gamma",
+      "xPostedAtUtc": "2025-11-10T13:50:42Z",
+      "weekdayUtc": "Mon",
+      "weekdayEt": "Mon",
+      "utcClock": "13:50",
+      "etClock": "08:50",
+      "ptClock": "05:50",
+      "istClock": "19:20",
+      "etMinutes": 530,
+      "linkedinPostedAtUtc": "2025-11-10T13:51:31Z",
+      "linkedinMinusXMin": 0.8
+    },
+    {
+      "slug": "airwallex",
+      "client": "Airwallex",
+      "xPostedAtUtc": "2025-12-08T13:03:39Z",
+      "weekdayUtc": "Mon",
+      "weekdayEt": "Mon",
+      "utcClock": "13:03",
+      "etClock": "08:03",
+      "ptClock": "05:03",
+      "istClock": "18:33",
+      "etMinutes": 483,
+      "linkedinPostedAtUtc": "2025-12-08T13:06:35Z",
+      "linkedinMinusXMin": 2.9
+    },
+    {
+      "slug": "poly-ai",
+      "client": "Poly AI",
+      "xPostedAtUtc": "2026-02-17T15:59:43Z",
+      "weekdayUtc": "Tue",
+      "weekdayEt": "Tue",
+      "utcClock": "15:59",
+      "etClock": "10:59",
+      "ptClock": "07:59",
+      "istClock": "21:29",
+      "etMinutes": 659,
+      "linkedinPostedAtUtc": null,
+      "linkedinMinusXMin": null
+    },
+    {
+      "slug": "wispr-flow",
+      "client": "Wispr Flow",
+      "xPostedAtUtc": "2026-02-23T17:09:47Z",
+      "weekdayUtc": "Mon",
+      "weekdayEt": "Mon",
+      "utcClock": "17:09",
+      "etClock": "12:09",
+      "ptClock": "09:09",
+      "istClock": "22:39",
+      "etMinutes": 729,
+      "linkedinPostedAtUtc": "2026-02-23T17:16:39Z",
+      "linkedinMinusXMin": 6.9
+    },
+    {
+      "slug": "playerzero",
+      "client": "PlayerZero",
+      "xPostedAtUtc": "2026-03-23T16:02:57Z",
+      "weekdayUtc": "Mon",
+      "weekdayEt": "Mon",
+      "utcClock": "16:02",
+      "etClock": "12:02",
+      "ptClock": "09:02",
+      "istClock": "21:32",
+      "etMinutes": 722,
+      "linkedinPostedAtUtc": null,
+      "linkedinMinusXMin": null
+    }
+  ],
+  "engagement": [
+    {
+      "slug": "icon",
+      "client": "Icon",
+      "likes": 8000,
+      "replies": 1400,
+      "replyRate": 0.175,
+      "mediaType": "video",
+      "authorType": "founder"
+    },
+    {
+      "slug": "superblocks",
+      "client": "Superblocks",
+      "likes": 5300,
+      "replies": 762,
+      "replyRate": 0.144,
+      "mediaType": "video",
+      "authorType": "founder"
+    },
+    {
+      "slug": "deel",
+      "client": "Deel",
+      "likes": 5400,
+      "replies": 465,
+      "replyRate": 0.086,
+      "mediaType": "image",
+      "authorType": "founder"
+    },
+    {
+      "slug": "cartesia",
+      "client": "Cartesia",
+      "likes": 8500,
+      "replies": 1400,
+      "replyRate": 0.165,
+      "mediaType": "video",
+      "authorType": "founder"
+    },
+    {
+      "slug": "gamma",
+      "client": "Gamma",
+      "likes": 2800,
+      "replies": 405,
+      "replyRate": 0.145,
+      "mediaType": "video",
+      "authorType": "founder"
+    },
+    {
+      "slug": "airwallex",
+      "client": "Airwallex",
+      "likes": 29700,
+      "replies": 1500,
+      "replyRate": 0.051,
+      "mediaType": "image",
+      "authorType": "founder"
+    },
+    {
+      "slug": "poly-ai",
+      "client": "Poly AI",
+      "likes": 4800,
+      "replies": 1500,
+      "replyRate": 0.313,
+      "mediaType": "video",
+      "authorType": "brand"
+    },
+    {
+      "slug": "wispr-flow",
+      "client": "Wispr Flow",
+      "likes": 10800,
+      "replies": 4500,
+      "replyRate": 0.417,
+      "mediaType": "video",
+      "authorType": "founder"
+    },
+    {
+      "slug": "playerzero",
+      "client": "PlayerZero",
+      "likes": 5300,
+      "replies": 885,
+      "replyRate": 0.167,
+      "mediaType": "video",
+      "authorType": "founder"
+    }
+  ],
+  "hypotheses": [
+    {
+      "code": "H1",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "The hero post is published from the founder's personal account, not the brand account.",
+      "verdict": "supported",
+      "summary": "8/9 hero posts come from a founder's personal account; exception: Poly AI (brand account).",
+      "evidence": {
+        "founders": [
+          "Icon",
+          "Superblocks",
+          "Deel",
+          "Cartesia",
+          "Gamma",
+          "Airwallex",
+          "Wispr Flow",
+          "PlayerZero"
+        ],
+        "brands": [
+          "Poly AI"
+        ]
+      }
+    },
+    {
+      "code": "H2",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "When a LinkedIn mirror exists, it goes live within 15 minutes of the X post.",
+      "verdict": "supported",
+      "summary": "6/9 launches have a LinkedIn mirror on the case page; 6/6 of those land within 15 min of the X post (median 2.6 min, max 8.8 min; LinkedIn went first on 2).",
+      "evidence": {
+        "pairs": [
+          {
+            "client": "Icon",
+            "linkedinMinusXMin": -0.1
+          },
+          {
+            "client": "Deel",
+            "linkedinMinusXMin": -8.8
+          },
+          {
+            "client": "Cartesia",
+            "linkedinMinusXMin": 2.3
+          },
+          {
+            "client": "Gamma",
+            "linkedinMinusXMin": 0.8
+          },
+          {
+            "client": "Airwallex",
+            "linkedinMinusXMin": 2.9
+          },
+          {
+            "client": "Wispr Flow",
+            "linkedinMinusXMin": 6.9
+          }
+        ],
+        "noLinkedIn": [
+          "Superblocks",
+          "Poly AI",
+          "PlayerZero"
+        ]
+      }
+    },
+    {
+      "code": "H3",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "Launches land Monday–Thursday inside a US morning-to-lunch window (08:00–13:30 ET), in two slots: East-coast breakfast and East-coast lunch.",
+      "verdict": "supported",
+      "summary": "9/9 on Mon–Thu (Tue 4, Thu 1, Mon 4; never Wed or Fri); 9/9 between 08:00 and 13:30 ET — 3 at 08:00–09:15 ET, 5 at 12:00–13:20 ET, outlier Poly AI 10:59 ET. Three posts (Cartesia, Poly AI, PlayerZero) sit within 3 min of 16:00 UTC across a US daylight-saving change, which hints the scheduling clock is not US-local.",
+      "evidence": {
+        "weekdaysEt": {
+          "Tue": 4,
+          "Thu": 1,
+          "Mon": 4
+        },
+        "inWindowEt": 9,
+        "breakfastEt": [
+          "Deel",
+          "Gamma",
+          "Airwallex"
+        ],
+        "lunchEt": [
+          "Icon",
+          "Superblocks",
+          "Cartesia",
+          "Wispr Flow",
+          "PlayerZero"
+        ],
+        "outliersEt": [
+          "Poly AI 10:59 ET"
+        ],
+        "near16Utc": [
+          "Cartesia",
+          "Poly AI",
+          "PlayerZero"
+        ],
+        "near13Utc": [
+          "Deel",
+          "Airwallex"
+        ],
+        "clocks": [
+          {
+            "client": "Icon",
+            "utc": "17:55",
+            "et": "12:55",
+            "pt": "09:55",
+            "ist": "23:25",
+            "weekdayEt": "Tue"
+          },
+          {
+            "client": "Superblocks",
+            "utc": "17:20",
+            "et": "13:20",
+            "pt": "10:20",
+            "ist": "22:50",
+            "weekdayEt": "Tue"
+          },
+          {
+            "client": "Deel",
+            "utc": "13:06",
+            "et": "09:06",
+            "pt": "06:06",
+            "ist": "18:36",
+            "weekdayEt": "Thu"
+          },
+          {
+            "client": "Cartesia",
+            "utc": "16:00",
+            "et": "12:00",
+            "pt": "09:00",
+            "ist": "21:30",
+            "weekdayEt": "Tue"
+          },
+          {
+            "client": "Gamma",
+            "utc": "13:50",
+            "et": "08:50",
+            "pt": "05:50",
+            "ist": "19:20",
+            "weekdayEt": "Mon"
+          },
+          {
+            "client": "Airwallex",
+            "utc": "13:03",
+            "et": "08:03",
+            "pt": "05:03",
+            "ist": "18:33",
+            "weekdayEt": "Mon"
+          },
+          {
+            "client": "Poly AI",
+            "utc": "15:59",
+            "et": "10:59",
+            "pt": "07:59",
+            "ist": "21:29",
+            "weekdayEt": "Tue"
+          },
+          {
+            "client": "Wispr Flow",
+            "utc": "17:09",
+            "et": "12:09",
+            "pt": "09:09",
+            "ist": "22:39",
+            "weekdayEt": "Mon"
+          },
+          {
+            "client": "PlayerZero",
+            "utc": "16:02",
+            "et": "12:02",
+            "pt": "09:02",
+            "ist": "21:32",
+            "weekdayEt": "Mon"
+          }
+        ]
+      }
+    },
+    {
+      "code": "H4",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "The caption's first line is a standalone number or dare, built to be quote-posted.",
+      "verdict": "rejected",
+      "summary": "5/9 first lines contain a figure or a dare (regex, provisional — LLM tagging in Phase 2).",
+      "evidence": {
+        "firstLines": [
+          {
+            "client": "Icon",
+            "firstLine": "Excited to introduce Icon, The First AI Admaker.",
+            "hasNumber": false,
+            "isDare": false
+          },
+          {
+            "client": "Superblocks",
+            "firstLine": "I’m excited to introduce Clark, the first AI Agent to build internal enterprise apps.",
+            "hasNumber": false,
+            "isDare": false
+          },
+          {
+            "client": "Deel",
+            "firstLine": "Deel has raised $300M at a $17.3B valuation",
+            "hasNumber": true,
+            "isDare": false
+          },
+          {
+            "client": "Cartesia",
+            "firstLine": "We’ve raised $100M from Kleiner Perkins, Index Ventures, Lightspeed, and NVIDIA.",
+            "hasNumber": true,
+            "isDare": false
+          },
+          {
+            "client": "Gamma",
+            "firstLine": "Today, as shared by The New York Times, we’re announcing two things:",
+            "hasNumber": false,
+            "isDare": false
+          },
+          {
+            "client": "Airwallex",
+            "firstLine": "Stripe offered to acquire us for $1.2 billion when we had $2M in revenue.",
+            "hasNumber": true,
+            "isDare": false
+          },
+          {
+            "client": "Poly AI",
+            "firstLine": "PolyAI has raised $200M from Nvidia, Khosla Ventures, and multiple top VCs.",
+            "hasNumber": true,
+            "isDare": false
+          },
+          {
+            "client": "Wispr Flow",
+            "firstLine": "We offered 5 people a Porsche 911 GT3 RS if they could get @WisprFlow to make a mistake",
+            "hasNumber": true,
+            "isDare": true
+          },
+          {
+            "client": "PlayerZero",
+            "firstLine": "Introducing: PlayerZero",
+            "hasNumber": false,
+            "isDare": false
+          }
+        ]
+      }
+    },
+    {
+      "code": "H5",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "Every hero post carries a natively uploaded 16:9 video in a fixed duration band.",
+      "verdict": "mixed",
+      "summary": "7/9 hero posts are native videos; 2 are image-led founder stories (Deel, Airwallex). Duration and format pending Phase 2 (ffprobe).",
+      "evidence": {
+        "videos": [
+          "Icon",
+          "Superblocks",
+          "Cartesia",
+          "Gamma",
+          "Poly AI",
+          "Wispr Flow",
+          "PlayerZero"
+        ],
+        "images": [
+          "Deel",
+          "Airwallex"
+        ]
+      }
+    },
+    {
+      "code": "H6",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "Each hero post bundles two or more news hooks (capital, traction, product, story) so amplifiers have multiple angles.",
+      "verdict": "supported",
+      "summary": "8/9 captions carry a funding or traction figure; 9/9 stack two or more hooks (regex over visible caption, provisional).",
+      "evidence": {
+        "perLaunch": [
+          {
+            "client": "Icon",
+            "funding": true,
+            "traction": false,
+            "product": true,
+            "story": false,
+            "stunt": false,
+            "hooks": 2
+          },
+          {
+            "client": "Superblocks",
+            "funding": true,
+            "traction": false,
+            "product": true,
+            "story": false,
+            "stunt": false,
+            "hooks": 2
+          },
+          {
+            "client": "Deel",
+            "funding": true,
+            "traction": true,
+            "product": false,
+            "story": true,
+            "stunt": false,
+            "hooks": 3
+          },
+          {
+            "client": "Cartesia",
+            "funding": true,
+            "traction": false,
+            "product": true,
+            "story": false,
+            "stunt": false,
+            "hooks": 2
+          },
+          {
+            "client": "Gamma",
+            "funding": true,
+            "traction": true,
+            "product": true,
+            "story": false,
+            "stunt": false,
+            "hooks": 3
+          },
+          {
+            "client": "Airwallex",
+            "funding": true,
+            "traction": true,
+            "product": false,
+            "story": true,
+            "stunt": false,
+            "hooks": 3
+          },
+          {
+            "client": "Poly AI",
+            "funding": true,
+            "traction": true,
+            "product": false,
+            "story": false,
+            "stunt": false,
+            "hooks": 2
+          },
+          {
+            "client": "Wispr Flow",
+            "funding": false,
+            "traction": false,
+            "product": true,
+            "story": false,
+            "stunt": true,
+            "hooks": 2
+          },
+          {
+            "client": "PlayerZero",
+            "funding": true,
+            "traction": false,
+            "product": true,
+            "story": false,
+            "stunt": false,
+            "hooks": 2
+          }
+        ]
+      }
+    },
+    {
+      "code": "H7",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "A repeat core of creator accounts appears across ≥3 launches; their posts arrive in a wave hours after the founder post.",
+      "verdict": "untested",
+      "summary": "Needs amplifier data (quote posts, replies, reposts). Stretch layer.",
+      "evidence": {}
+    },
+    {
+      "code": "H8",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "Stated reach and roster size stepped up in discrete jumps alongside a positioning change.",
+      "verdict": "untested",
+      "summary": "Needs Wayback Machine snapshots. Bonus layer.",
+      "evidence": {}
+    },
+    {
+      "code": "H9",
+      "computedAt": "2026-09-15T07:30:45.690Z",
+      "statement": "Stunt or challenge hooks produce reply rates far above stat-led hooks; replies are the engagement being optimised.",
+      "verdict": "mixed",
+      "summary": "Median reply rate 20% of likes; top is Wispr Flow at 42% (stunt hook). By hook: launch 20%, story 10%, stunt 40%. Hook tags provisional.",
+      "evidence": {
+        "rows": [
+          {
+            "client": "Icon",
+            "replyRate": 0.175,
+            "mediaType": "video",
+            "hook": "launch"
+          },
+          {
+            "client": "Superblocks",
+            "replyRate": 0.144,
+            "mediaType": "video",
+            "hook": "launch"
+          },
+          {
+            "client": "Deel",
+            "replyRate": 0.086,
+            "mediaType": "image",
+            "hook": "story"
+          },
+          {
+            "client": "Cartesia",
+            "replyRate": 0.165,
+            "mediaType": "video",
+            "hook": "launch"
+          },
+          {
+            "client": "Gamma",
+            "replyRate": 0.145,
+            "mediaType": "video",
+            "hook": "launch"
+          },
+          {
+            "client": "Airwallex",
+            "replyRate": 0.051,
+            "mediaType": "image",
+            "hook": "story"
+          },
+          {
+            "client": "Poly AI",
+            "replyRate": 0.313,
+            "mediaType": "video",
+            "hook": "launch"
+          },
+          {
+            "client": "Wispr Flow",
+            "replyRate": 0.417,
+            "mediaType": "video",
+            "hook": "stunt"
+          },
+          {
+            "client": "PlayerZero",
+            "replyRate": 0.167,
+            "mediaType": "video",
+            "hook": "launch"
+          }
+        ],
+        "medianReplyRate": 0.2
+      }
+    }
+  ]
+}
