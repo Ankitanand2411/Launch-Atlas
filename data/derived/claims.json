@@ -1,0 +1,67 @@
+[
+  {
+    "date": "2026-09-15",
+    "observedAt": "2026-09-15",
+    "source": "live-site",
+    "url": "https://www.sociallcapital.com/",
+    "viewsClaim": "> 300M views per month across X and LinkedIn",
+    "creatorsClaim": null,
+    "teamSize": "< 20 people",
+    "growthClaim": "> 1000% YoY",
+    "guarantee": true,
+    "tagline": "Building the distribution infrastructure for generational companies",
+    "note": "Homepage as fetched. The /work page adds “~500 million views across our client base”."
+  },
+  {
+    "date": "2026-09-15",
+    "observedAt": "2026-09-15",
+    "source": "live-site",
+    "url": "https://www.sociallcapital.com/work",
+    "viewsClaim": "~500 million views across our client base",
+    "creatorsClaim": null,
+    "teamSize": null,
+    "growthClaim": null,
+    "guarantee": null,
+    "tagline": "Launches, campaigns, and cultural moments.",
+    "note": "Work index as fetched; nine launches listed."
+  },
+  {
+    "date": null,
+    "observedAt": "2026-09-15",
+    "source": "linkedin-company",
+    "url": "https://www.linkedin.com/company/socialcapital-inc",
+    "viewsClaim": null,
+    "creatorsClaim": null,
+    "teamSize": null,
+    "growthClaim": null,
+    "guarantee": null,
+    "tagline": "Viral Short Form Videos as a service",
+    "note": "Company-page tagline as indexed; the earliest positioning visible in public."
+  },
+  {
+    "date": null,
+    "observedAt": "2026-09-15",
+    "source": "third-party",
+    "url": "https://www.scamadviser.com/check-website/sociallcapital.com",
+    "viewsClaim": "400M views across X & LinkedIn",
+    "creatorsClaim": "500+ creators",
+    "teamSize": null,
+    "growthClaim": null,
+    "guarantee": null,
+    "tagline": "Launch + build and scale B2B influencer-led GTM on X & LinkedIn",
+    "note": "Third-party capture of an earlier homepage description; capture date not shown. Wayback will date it."
+  },
+  {
+    "date": null,
+    "observedAt": "2026-09-15",
+    "source": "third-party",
+    "url": "https://rocketreach.co/social-capital-inc-profile_b73a5220c7f3651e",
+    "viewsClaim": "200M views across LinkedIn and X",
+    "creatorsClaim": "300+ creators",
+    "teamSize": null,
+    "growthClaim": null,
+    "guarantee": null,
+    "tagline": "Build and scale influencer programs and launches on LinkedIn and X",
+    "note": "Third-party capture of an earlier description; capture date not shown."
+  }
+]

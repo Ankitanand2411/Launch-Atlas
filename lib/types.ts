@@ -105,6 +105,9 @@ export interface Analysis {
   launchCount: number;
   timing: TimingRow[];
   engagement: EngagementRow[];
+  amplification: AmplificationRow[];
+  roster: RosterOverlap | null;
+  claims: ClaimRow[];
   hypotheses: HypothesisResult[];
 }
 
@@ -162,4 +165,99 @@ export interface Enrichment {
   fullText: string | null;
   enrichedAt: string;
   notes: string[];
+}
+
+/* ---------- Stretch: amplification (free sources only) ---------- */
+
+export interface XPostMetrics {
+  id: string;
+  url: string;
+  text: string | null;
+  views: number | null;
+  likes: number | null;
+  reposts: number | null;
+  quotes: number | null;
+  replies: number | null;
+  bookmarks: number | null;
+  authorHandle: string | null;
+  authorName: string | null;
+  authorFollowers: number | null;
+  createdAtUtc: string | null;
+  /** Highest-bitrate MP4 the endpoint exposes, if any. */
+  bestVideoUrl: string | null;
+  videoDurationS: number | null;
+  source: "fxtwitter" | "syndication";
+  fetchedAt: string;
+}
+
+export interface LinkedInPostMetrics {
+  activityId: string;
+  url: string;
+  text: string | null;
+  reactions: number | null;
+  comments: number | null;
+  reposts: number | null;
+  source: "linkedin-public" | "override";
+  fetchedAt: string;
+  note?: string;
+}
+
+export interface AmplificationRecord {
+  slug: string;
+  x: XPostMetrics | null;
+  linkedin: LinkedInPostMetrics | null;
+  notes: string[];
+}
+
+export interface AmplificationRow {
+  slug: string;
+  client: string;
+  views: number | null;
+  likes: number | null;
+  reposts: number | null;
+  quotes: number | null;
+  replies: number | null;
+  bookmarks: number | null;
+  authorFollowers: number | null;
+  /** quotes / (quotes + reposts): commentary vs. plain amplification. */
+  quoteShare: number | null;
+  likesPerThousandViews: number | null;
+  likesPerThousandFollowers: number | null;
+  linkedinReactions: number | null;
+  linkedinComments: number | null;
+  source: string;
+}
+
+export interface RosterEntry {
+  launchSlug: string;
+  platform: Platform;
+  handle: string;
+  followers: number | null;
+  kind: "quote" | "reply" | "repost" | "standalone";
+  url: string | null;
+  postedAtUtc: string | null;
+}
+
+export interface RosterOverlap {
+  entries: number;
+  creators: number;
+  repeat: { handle: string; platform: Platform; launches: string[]; followers: number | null }[];
+  byTier: Record<string, number>;
+}
+
+/* ---------- Bonus: positioning claims ---------- */
+
+export interface ClaimRow {
+  /** ISO date of the capture when known (Wayback); null for undated third-party observations. */
+  date: string | null;
+  observedAt: string;
+  source: "wayback" | "live-site" | "third-party" | "linkedin-company";
+  url: string;
+  viewsClaim: string | null;
+  creatorsClaim: string | null;
+  teamSize: string | null;
+  growthClaim: string | null;
+  guarantee: boolean | null;
+  tagline: string | null;
+  note?: string;
 }

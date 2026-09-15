@@ -1,5 +1,6 @@
-import type { EngagementRow, Enrichment, HypothesisResult, LaunchSeed, Post, TimingRow, Verdict } from "@/lib/types";
+import type { AmplificationRow, ClaimRow, EngagementRow, Enrichment, HypothesisResult, LaunchSeed, Post, RosterOverlap, TimingRow, Verdict } from "@/lib/types";
 import { getTags } from "./hooks";
+import { hypothesisH8 } from "./claims";
 
 const median = (xs: number[]) => {
   if (!xs.length) return null;
@@ -12,7 +13,13 @@ const r1 = (x: number) => Math.round(x * 10) / 10;
 const shareVerdict = (share: number, n: number): Verdict => (n < 3 ? "untested" : share >= 0.85 ? "supported" : share >= 0.6 ? "mixed" : "rejected");
 const pct = (a: number, b: number) => `${a}/${b}`;
 
-export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing: TimingRow[], engagement: EngagementRow[], enrichment: Enrichment[] = [], now = new Date()): HypothesisResult[] {
+export interface HypothesisInputs { enrichment?: Enrichment[]; amplification?: AmplificationRow[]; roster?: RosterOverlap | null; claims?: ClaimRow[] }
+
+export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing: TimingRow[], engagement: EngagementRow[], inputs: HypothesisInputs = {}, now = new Date()): HypothesisResult[] {
+  const enrichment = inputs.enrichment ?? [];
+  const amplification = inputs.amplification ?? [];
+  const roster = inputs.roster ?? null;
+  const claims = inputs.claims ?? [];
   const computedAt = now.toISOString();
   const n = launches.length;
   const out: HypothesisResult[] = [];
@@ -113,9 +120,31 @@ export function computeHypotheses(launches: LaunchSeed[], posts: Post[], timing:
     });
   }
 
-  // H7, H8 — untested in Phase 1
-  out.push({ code: "H7", computedAt, statement: "A repeat core of creator accounts appears across ≥3 launches; their posts arrive in a wave hours after the founder post.", verdict: "untested", summary: "Needs amplifier data (quote posts, replies, reposts). Stretch layer.", evidence: {} });
-  out.push({ code: "H8", computedAt, statement: "Stated reach and roster size stepped up in discrete jumps alongside a positioning change.", verdict: "untested", summary: "Needs Wayback Machine snapshots. Bonus layer.", evidence: {} });
+  // H7 — how the posts travel: commentary vs plain reposts (free counts), plus repeat creators (manual roster)
+  {
+    const shaped = amplification.filter((a) => a.quoteShare != null);
+    const shares = shaped.map((a) => a.quoteShare as number);
+    const medShare = median(shares);
+    const partA = shaped.length >= 3
+      ? `${pct(shares.filter((q) => q > 0.5).length, shaped.length)} launches are amplified more by quote posts than plain reposts (median quote share ${Math.round((medShare ?? 0) * 100)}%).`
+      : "Quote/repost split needs exact counts: run `npm run amplify` (free).";
+    const partB = roster
+      ? `Roster: ${roster.creators} creators over ${roster.entries} posts; ${roster.repeat.filter((r) => r.launches.length >= 3).length} appear in three or more launches, ${roster.repeat.length} in two or more.`
+      : "Repeat-creator core needs the manual roster (data/manual/amplifiers.csv, free).";
+    const verdict: Verdict = roster
+      ? (roster.repeat.some((r) => r.launches.length >= 3) ? "supported" : roster.repeat.length ? "mixed" : "rejected")
+      : shaped.length >= 3 ? "mixed" : "untested";
+    out.push({
+      code: "H7", computedAt,
+      statement: "Launches are amplified by commentary (quote posts, replies) rather than plain reposts, and a repeat core of creators appears across three or more launches.",
+      verdict,
+      summary: `${partA} ${partB}`,
+      evidence: { shape: amplification.map((a) => ({ client: a.client, views: a.views, likes: a.likes, reposts: a.reposts, quotes: a.quotes, replies: a.replies, bookmarks: a.bookmarks, quoteShare: a.quoteShare, likesPerThousandViews: a.likesPerThousandViews, authorFollowers: a.authorFollowers, source: a.source })), roster },
+    });
+  }
+
+  // H8 — positioning drift (claims)
+  out.push(hypothesisH8(claims, computedAt));
 
   // H9 — reply engineering (descriptive in Phase 1)
   {

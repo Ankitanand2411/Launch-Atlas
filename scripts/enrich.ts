@@ -28,6 +28,8 @@ const FRAME_TIMES = [0.5, 3, 10];
 const launches: LaunchSeed[] = JSON.parse(fs.readFileSync(path.join(ROOT, "data/derived/launches.json"), "utf8"));
 const outPath = path.join(ROOT, "data/derived/enrichment.json");
 const previous: Enrichment[] = fs.existsSync(outPath) ? JSON.parse(fs.readFileSync(outPath, "utf8")) : [];
+const ampPath = path.join(ROOT, "data/derived/amplification.json");
+const amplification: Array<{ slug: string; x: { bestVideoUrl: string | null } | null }> = fs.existsSync(ampPath) ? JSON.parse(fs.readFileSync(ampPath, "utf8")) : [];
 for (const d of ["data/raw/videos", "data/raw/transcripts", "data/raw/tags", "public/frames"]) fs.mkdirSync(path.join(ROOT, d), { recursive: true });
 
 function loadOverrideText(xUrl: string): string | null {
@@ -108,10 +110,11 @@ async function main() {
     let framePublic: string[] = [];
     let transcript: Transcript | null = null;
 
-    if (l.videoUrl) {
+    const videoUrl = amplification.find((a) => a.slug === l.slug)?.x?.bestVideoUrl ?? l.videoUrl;
+    if (videoUrl) {
       const file = path.join(ROOT, "data/raw/videos", `${l.slug}.mp4`);
-      if (await download(l.videoUrl, file, notes)) {
-        try { video = probe(file, l.videoUrl); } catch (e) { notes.push(`ffprobe failed: ${(e as Error).message}`); }
+      if (await download(videoUrl, file, notes)) {
+        try { video = probe(file, videoUrl); } catch (e) { notes.push(`ffprobe failed: ${(e as Error).message}`); }
         if (video) {
           try { framePublic = frames(file, l.slug, video.durationS); framePaths = framePublic.map((p) => path.join(ROOT, "public", p)); } catch (e) { notes.push(`frames failed: ${(e as Error).message}`); }
           if (video.hasAudio) { try { transcript = await transcribe(file, l.slug, notes); } catch (e) { notes.push(`transcription failed: ${(e as Error).message}`); } }

@@ -21,6 +21,7 @@ export const getPosts = (slug: string) => posts.filter((p) => p.launchSlug === s
 export const getTiming = (slug: string) => analysis.timing.find((t) => t.slug === slug) ?? null;
 export const getEngagement = (slug: string) => analysis.engagement.find((e) => e.slug === slug) ?? null;
 export const getEnrichment = (slug: string) => enrichment.find((e) => e.slug === slug) ?? null;
+export const getAmplification = (slug: string) => analysis.amplification.find((a) => a.slug === slug) ?? null;
 
 export const REPO_URL = process.env.NEXT_PUBLIC_REPO_URL ?? null;
 

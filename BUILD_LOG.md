@@ -41,3 +41,27 @@ Times are IST. Agent: Claude (claude.ai) driving the build in a sandbox; the hum
   video.twimg.com or api.groq.com); the real run happens on the human's machine.
 - Commits rewritten to the human's GitHub handle with Co-Authored-By: Claude trailers; origin set to
   github.com/Ankitanand2411/Launch-Atlas. Push requires the human's credentials.
+
+## 2026-09-16 — Phase 4, insight (≈40 min)
+- `lib/insight.ts` generates the headline, lede, three supports, counter-evidence, why-it-matters, next tests and
+  method from analysis.json. Wording fixed, numbers computed; a test checks every integer in the headline exists in the
+  evidence. Headline: the synchronised-detonation timing finding (H2 + H3 supported); money-first is the fallback.
+- `/insight` rebuilt around it; home page shows the generated headline with a link.
+
+## 2026-09-16 — Stretch: network, claims, analyze — free data only (≈90 min)
+- Constraint from the human: no paid APIs. Network layer redesigned around free sources: FxTwitter → X syndication for
+  exact counts, full text, follower counts and best video variant; LinkedIn public page best effort; manual roster CSV
+  for the repeat-creator question. `scripts/amplify.ts`; exact counts replace case-page approximations in posts.json.
+- H7 reframed (quote share + roster). `/network` page with honest empty states that say exactly which free command fills them.
+- Claims: seed of observed positioning states (live site, two third-party captures, LinkedIn company tagline) +
+  `scripts/claims.ts` over the Wayback CDX API. H8 logic initially called two same-day pages a time series → fixed to
+  group by capture date. `/claims` page.
+- `/analyze` + `/api/anatomy`: paste any X post → timing decoded from the ID, free-endpoint counts when they answer,
+  regex hooks, seven-check fingerprint against the nine. Verified the route decodes correctly from the sandbox even
+  with both endpoints unreachable.
+- Nav extended to six sections; 30 tests passing; build static apart from the API route.
+
+## 2026-09-16 — Phase 5, ship (≈30 min)
+- README rewritten: the idea, the decoded brief, free-data table, architecture diagram, pages, running order,
+  layout, design, limits, build process. CLAUDE.md and HYPOTHESES.md updated.
+- Remaining for the human: push, deploy to Vercel, run amplify → claims → enrich → analyze, add the live URL to the README.

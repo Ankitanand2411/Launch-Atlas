@@ -25,8 +25,14 @@ hypotheses (HYPOTHESES.md) to surface one operational insight about how the comp
 - `npm run discover`               live crawl of sociallcapital.com/work (+ raw HTML cache)
 - `npm run enrich`                 download videos, ffprobe, frames, Groq Whisper, model hook tags → enrichment.json
   (`--dry-run` for no network; `--only <slug>`; `--vision` sends frames to Anthropic)
-- `npm run analyze`                decode, merge overrides, read enrichment, compute timing/engagement/hypotheses
-- `npm run pipeline`               discover (offline) + enrich (dry) + analyze
+- `npm run amplify`                free exact X counts (FxTwitter → syndication), LinkedIn public counts, manual roster → amplification.json
+- `npm run claims`                 Wayback CDX captures → dated positioning claims → claims.json (`--offline` = seed only)
+- `npm run analyze`                decode, merge overrides, read enrichment/amplification/claims, compute rows + H1–H9
+- `npm run pipeline`               discover (offline) + enrich (dry) + amplify (offline) + claims (offline) + analyze
+
+## Rules that shaped the stretch layers
+- No paid APIs or scraping services anywhere. Free unofficial endpoints get a fallback and a note on failure.
+- The insight narrative (lib/insight.ts) is generated from analysis.json; never type a number into it.
 - `npm test` · `npm run dev` · `npm run build`
 
 ## Out of scope

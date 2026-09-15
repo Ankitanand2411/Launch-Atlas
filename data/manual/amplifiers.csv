@@ -1,0 +1,4 @@
+# Manual amplifier roster — the free path for H7. One row per creator post that amplified a launch.
+# Sources: the hero post's Quotes tab (x.com/<handle>/status/<id>/quotes, logged in), its replies, LinkedIn reposts.
+# Store only public handle, follower count, kind and URL. Aggregated in the UI; never published per-person.
+launch_slug,platform,handle,followers,kind,url,posted_at_utc

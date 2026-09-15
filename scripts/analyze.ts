@@ -10,7 +10,8 @@ import { buildPosts } from "@/lib/analyze/build-posts";
 import { buildTiming } from "@/lib/analyze/timing";
 import { buildEngagement } from "@/lib/analyze/engagement";
 import { computeHypotheses } from "@/lib/analyze/hypotheses";
-import type { Analysis, Enrichment, LaunchSeed } from "@/lib/types";
+import { buildAmplification, applyAmplificationToPosts, loadRoster } from "@/lib/analyze/amplification";
+import type { Analysis, AmplificationRecord, ClaimRow, Enrichment, LaunchSeed } from "@/lib/types";
 
 const ROOT = process.cwd();
 const IN = path.join(ROOT, "data/derived/launches.json");
@@ -18,12 +19,18 @@ const launches: LaunchSeed[] = JSON.parse(fs.readFileSync(IN, "utf8"));
 const ENRICH = path.join(ROOT, "data/derived/enrichment.json");
 const enrichment: Enrichment[] = fs.existsSync(ENRICH) ? JSON.parse(fs.readFileSync(ENRICH, "utf8")) : [];
 
-const posts = buildPosts(launches, ROOT);
+const readIf = <T,>(rel: string, fallback: T): T => { const f = path.join(ROOT, rel); return fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, "utf8")) as T) : fallback; };
+const records = readIf<AmplificationRecord[]>("data/derived/amplification.json", []);
+const claims = readIf<ClaimRow[]>("data/derived/claims.json", []);
+
+const posts = applyAmplificationToPosts(buildPosts(launches, ROOT), records);
 const timing = buildTiming(launches, posts);
 const engagement = buildEngagement(launches, posts);
-const hypotheses = computeHypotheses(launches, posts, timing, engagement, enrichment);
+const amplification = buildAmplification(launches, records, posts);
+const roster = loadRoster(ROOT);
+const hypotheses = computeHypotheses(launches, posts, timing, engagement, { enrichment, amplification, roster, claims });
 
-const analysis: Analysis = { generatedAt: new Date().toISOString(), launchCount: launches.length, timing, engagement, hypotheses };
+const analysis: Analysis = { generatedAt: new Date().toISOString(), launchCount: launches.length, timing, engagement, amplification, roster, claims, hypotheses };
 fs.writeFileSync(path.join(ROOT, "data/derived/posts.json"), JSON.stringify(posts, null, 2) + "\n");
 fs.writeFileSync(path.join(ROOT, "data/derived/analysis.json"), JSON.stringify(analysis, null, 2) + "\n");
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T07:52:50.556Z",
+  "generatedAt": "2026-09-15T08:38:35.635Z",
   "launchCount": 9,
   "timing": [
     {
@@ -212,10 +212,233 @@
       "authorType": "founder"
     }
   ],
+  "amplification": [
+    {
+      "slug": "icon",
+      "client": "Icon",
+      "views": null,
+      "likes": 8000,
+      "reposts": null,
+      "quotes": null,
+      "replies": 1400,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "superblocks",
+      "client": "Superblocks",
+      "views": null,
+      "likes": 5300,
+      "reposts": null,
+      "quotes": null,
+      "replies": 762,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "deel",
+      "client": "Deel",
+      "views": null,
+      "likes": 5400,
+      "reposts": null,
+      "quotes": null,
+      "replies": 465,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "cartesia",
+      "client": "Cartesia",
+      "views": null,
+      "likes": 8500,
+      "reposts": null,
+      "quotes": null,
+      "replies": 1400,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "gamma",
+      "client": "Gamma",
+      "views": null,
+      "likes": 2800,
+      "reposts": null,
+      "quotes": null,
+      "replies": 405,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "airwallex",
+      "client": "Airwallex",
+      "views": null,
+      "likes": 29700,
+      "reposts": null,
+      "quotes": null,
+      "replies": 1500,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "poly-ai",
+      "client": "Poly AI",
+      "views": null,
+      "likes": 4800,
+      "reposts": null,
+      "quotes": null,
+      "replies": 1500,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "wispr-flow",
+      "client": "Wispr Flow",
+      "views": null,
+      "likes": 10800,
+      "reposts": null,
+      "quotes": null,
+      "replies": 4500,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    },
+    {
+      "slug": "playerzero",
+      "client": "PlayerZero",
+      "views": null,
+      "likes": 5300,
+      "reposts": null,
+      "quotes": null,
+      "replies": 885,
+      "bookmarks": null,
+      "authorFollowers": null,
+      "quoteShare": null,
+      "likesPerThousandViews": null,
+      "likesPerThousandFollowers": null,
+      "linkedinReactions": null,
+      "linkedinComments": null,
+      "source": "socap-case-page"
+    }
+  ],
+  "roster": null,
+  "claims": [
+    {
+      "date": "2026-09-15",
+      "observedAt": "2026-09-15",
+      "source": "live-site",
+      "url": "https://www.sociallcapital.com/",
+      "viewsClaim": "> 300M views per month across X and LinkedIn",
+      "creatorsClaim": null,
+      "teamSize": "< 20 people",
+      "growthClaim": "> 1000% YoY",
+      "guarantee": true,
+      "tagline": "Building the distribution infrastructure for generational companies",
+      "note": "Homepage as fetched. The /work page adds “~500 million views across our client base”."
+    },
+    {
+      "date": "2026-09-15",
+      "observedAt": "2026-09-15",
+      "source": "live-site",
+      "url": "https://www.sociallcapital.com/work",
+      "viewsClaim": "~500 million views across our client base",
+      "creatorsClaim": null,
+      "teamSize": null,
+      "growthClaim": null,
+      "guarantee": null,
+      "tagline": "Launches, campaigns, and cultural moments.",
+      "note": "Work index as fetched; nine launches listed."
+    },
+    {
+      "date": null,
+      "observedAt": "2026-09-15",
+      "source": "linkedin-company",
+      "url": "https://www.linkedin.com/company/socialcapital-inc",
+      "viewsClaim": null,
+      "creatorsClaim": null,
+      "teamSize": null,
+      "growthClaim": null,
+      "guarantee": null,
+      "tagline": "Viral Short Form Videos as a service",
+      "note": "Company-page tagline as indexed; the earliest positioning visible in public."
+    },
+    {
+      "date": null,
+      "observedAt": "2026-09-15",
+      "source": "third-party",
+      "url": "https://www.scamadviser.com/check-website/sociallcapital.com",
+      "viewsClaim": "400M views across X & LinkedIn",
+      "creatorsClaim": "500+ creators",
+      "teamSize": null,
+      "growthClaim": null,
+      "guarantee": null,
+      "tagline": "Launch + build and scale B2B influencer-led GTM on X & LinkedIn",
+      "note": "Third-party capture of an earlier homepage description; capture date not shown. Wayback will date it."
+    },
+    {
+      "date": null,
+      "observedAt": "2026-09-15",
+      "source": "third-party",
+      "url": "https://rocketreach.co/social-capital-inc-profile_b73a5220c7f3651e",
+      "viewsClaim": "200M views across LinkedIn and X",
+      "creatorsClaim": "300+ creators",
+      "teamSize": null,
+      "growthClaim": null,
+      "guarantee": null,
+      "tagline": "Build and scale influencer programs and launches on LinkedIn and X",
+      "note": "Third-party capture of an earlier description; capture date not shown."
+    }
+  ],
   "hypotheses": [
     {
       "code": "H1",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "The hero post is published from the founder's personal account, not the brand account.",
       "verdict": "supported",
       "summary": "8/9 hero posts come from a founder's personal account; exception: Poly AI (brand account).",
@@ -237,7 +460,7 @@
     },
     {
       "code": "H2",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "When a LinkedIn mirror exists, it goes live within 15 minutes of the X post.",
       "verdict": "supported",
       "summary": "6/9 launches have a LinkedIn mirror on the case page; 6/6 of those land within 15 min of the X post (median 2.6 min, max 8.8 min; LinkedIn went first on 2).",
@@ -277,7 +500,7 @@
     },
     {
       "code": "H3",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "Launches land Monday–Thursday inside a US morning-to-lunch window (08:00–13:30 ET), in two slots: East-coast breakfast and East-coast lunch.",
       "verdict": "supported",
       "summary": "9/9 on Mon–Thu (Tue 4, Thu 1, Mon 4; never Wed or Fri); 9/9 between 08:00 and 13:30 ET — 3 at 08:00–09:15 ET, 5 at 12:00–13:20 ET, outlier Poly AI 10:59 ET. Three posts (Cartesia, Poly AI, PlayerZero) sit within 3 min of 16:00 UTC across a US daylight-saving change, which hints the scheduling clock is not US-local.",
@@ -390,7 +613,7 @@
     },
     {
       "code": "H4",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "A money, valuation, revenue or scale figure appears within the first three lines of the caption.",
       "verdict": "supported",
       "summary": "8/9 captions put a figure in the first three lines (exception: Icon); only 5/9 put it in the first line itself. Tags: regex over the visible caption, provisional.",
@@ -489,7 +712,7 @@
     },
     {
       "code": "H5",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "Every hero post carries a natively uploaded 16:9 video in a fixed duration band.",
       "verdict": "untested",
       "summary": "7/9 hero posts are native videos; 2 are image-led founder stories (Deel, Airwallex). Duration and format pending enrichment (ffprobe).",
@@ -512,7 +735,7 @@
     },
     {
       "code": "H6",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "Each hero post bundles two or more news hooks (capital, traction, product, story, stunt) so amplifiers have multiple angles.",
       "verdict": "supported",
       "summary": "8/9 posts carry a capital or traction hook; 9/9 stack two or more hooks. Tags: regex over the visible caption, provisional.",
@@ -616,23 +839,188 @@
     },
     {
       "code": "H7",
-      "computedAt": "2026-09-15T07:52:50.554Z",
-      "statement": "A repeat core of creator accounts appears across ≥3 launches; their posts arrive in a wave hours after the founder post.",
+      "computedAt": "2026-09-15T08:38:35.634Z",
+      "statement": "Launches are amplified by commentary (quote posts, replies) rather than plain reposts, and a repeat core of creators appears across three or more launches.",
       "verdict": "untested",
-      "summary": "Needs amplifier data (quote posts, replies, reposts). Stretch layer.",
-      "evidence": {}
+      "summary": "Quote/repost split needs exact counts: run `npm run amplify` (free). Repeat-creator core needs the manual roster (data/manual/amplifiers.csv, free).",
+      "evidence": {
+        "shape": [
+          {
+            "client": "Icon",
+            "views": null,
+            "likes": 8000,
+            "reposts": null,
+            "quotes": null,
+            "replies": 1400,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "Superblocks",
+            "views": null,
+            "likes": 5300,
+            "reposts": null,
+            "quotes": null,
+            "replies": 762,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "Deel",
+            "views": null,
+            "likes": 5400,
+            "reposts": null,
+            "quotes": null,
+            "replies": 465,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "Cartesia",
+            "views": null,
+            "likes": 8500,
+            "reposts": null,
+            "quotes": null,
+            "replies": 1400,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "Gamma",
+            "views": null,
+            "likes": 2800,
+            "reposts": null,
+            "quotes": null,
+            "replies": 405,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "Airwallex",
+            "views": null,
+            "likes": 29700,
+            "reposts": null,
+            "quotes": null,
+            "replies": 1500,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "Poly AI",
+            "views": null,
+            "likes": 4800,
+            "reposts": null,
+            "quotes": null,
+            "replies": 1500,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "Wispr Flow",
+            "views": null,
+            "likes": 10800,
+            "reposts": null,
+            "quotes": null,
+            "replies": 4500,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          },
+          {
+            "client": "PlayerZero",
+            "views": null,
+            "likes": 5300,
+            "reposts": null,
+            "quotes": null,
+            "replies": 885,
+            "bookmarks": null,
+            "quoteShare": null,
+            "likesPerThousandViews": null,
+            "authorFollowers": null,
+            "source": "socap-case-page"
+          }
+        ],
+        "roster": null
+      }
     },
     {
       "code": "H8",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "Stated reach and roster size stepped up in discrete jumps alongside a positioning change.",
-      "verdict": "untested",
-      "summary": "Needs Wayback Machine snapshots. Bonus layer.",
-      "evidence": {}
+      "verdict": "mixed",
+      "summary": "3 distinct claim states observed (200M views across LinkedIn and X | 300+ creators → 400M views across X & LinkedIn | 500+ creators → > 300M views per month across X and LinkedIn; ~500 million views across our client base | —) and a positioning shift from short-form video service to guaranteed launches — but only 1 capture date is known, so the order is inferred from the numbers, not dated. `npm run claims` pulls Wayback captures to date them.",
+      "evidence": {
+        "states": [
+          "200M views across LinkedIn and X | 300+ creators",
+          "400M views across X & LinkedIn | 500+ creators",
+          "> 300M views per month across X and LinkedIn; ~500 million views across our client base | —"
+        ],
+        "dated": [
+          {
+            "date": "2026-09-15",
+            "views": "> 300M views per month across X and LinkedIn; ~500 million views across our client base",
+            "creators": null,
+            "taglines": [
+              "Building the distribution infrastructure for generational companies",
+              "Launches, campaigns, and cultural moments."
+            ],
+            "urls": [
+              "https://www.sociallcapital.com/",
+              "https://www.sociallcapital.com/work"
+            ]
+          }
+        ],
+        "undated": [
+          {
+            "source": "linkedin-company",
+            "views": null,
+            "creators": null,
+            "tagline": "Viral Short Form Videos as a service",
+            "url": "https://www.linkedin.com/company/socialcapital-inc"
+          },
+          {
+            "source": "third-party",
+            "views": "400M views across X & LinkedIn",
+            "creators": "500+ creators",
+            "tagline": "Launch + build and scale B2B influencer-led GTM on X & LinkedIn",
+            "url": "https://www.scamadviser.com/check-website/sociallcapital.com"
+          },
+          {
+            "source": "third-party",
+            "views": "200M views across LinkedIn and X",
+            "creators": "300+ creators",
+            "tagline": "Build and scale influencer programs and launches on LinkedIn and X",
+            "url": "https://rocketreach.co/social-capital-inc-profile_b73a5220c7f3651e"
+          }
+        ]
+      }
     },
     {
       "code": "H9",
-      "computedAt": "2026-09-15T07:52:50.554Z",
+      "computedAt": "2026-09-15T08:38:35.634Z",
       "statement": "Stunt or challenge hooks produce reply rates far above stat-led hooks; replies are the engagement being optimised.",
       "verdict": "mixed",
       "summary": "Median reply rate 20% of likes; top is Wispr Flow at 42% (stunt hook). By hook: launch 20%, story 10%, stunt 40%. Tags: regex over the visible caption, provisional.",
