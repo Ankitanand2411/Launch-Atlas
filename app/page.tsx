@@ -1,11 +1,11 @@
 import { LaunchClock } from "@/components/LaunchClock";
 import { Roster } from "@/components/Roster";
-import { analysis, launchesChronological } from "@/lib/data";
+import { analysis, launches, launchesChronological } from "@/lib/data";
+import { buildInsight } from "@/lib/insight";
+import Link from "next/link";
 
 export default function Home() {
-  const h2 = analysis.hypotheses.find((h) => h.code === "H2");
-  const h3 = analysis.hypotheses.find((h) => h.code === "H3");
-  const working = h2?.verdict === "supported" && h3?.verdict === "supported";
+  const ins = buildInsight(analysis, launches);
   return (
     <div className="pt-14 sm:pt-20">
       <h1 className="display measure">Nine launches. One clock.</h1>
@@ -13,14 +13,12 @@ export default function Home() {
         Every launch Social Capital Inc. lists on its work page, decoded from the public posts themselves:
         when it fired, on which platforms, with what hook, and how the room responded.
       </p>
-      {working && (
-        <p className="measure mt-8 text-[20px] leading-8">
-          <span className="marker">
-            All nine hero posts fired Monday to Thursday between 8:00 and 13:30 Eastern, and every LinkedIn mirror went live within nine minutes of the X post.
-          </span>
-          <span className="block mt-2 text-[13px] leading-5 text-ink-2">Working finding from Phase 1. Verified against the decoded timestamps below; hooks and amplification still to come.</span>
-        </p>
-      )}
+      <p className="measure mt-8 text-[20px] leading-8">
+        <span className="marker">{ins.headline}</span>
+        <span className="block mt-2 text-[13px] leading-5 text-ink-2">
+          {ins.status === "headline" ? "Verified against the decoded timestamps below." : "Working finding; see the hypothesis board."} <Link href="/insight" className="underline hover:text-ink">Read the full insight</Link>
+        </span>
+      </p>
       <section className="mt-14">
         <LaunchClock rows={analysis.timing} />
       </section>
